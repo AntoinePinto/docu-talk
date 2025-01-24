@@ -102,7 +102,7 @@ if create_chatbot:
         )
 
         new_message = st.chat_message("assistant", avatar=LOGO_PATH)
-        new_message.markdown(f"To illustrate the chatbot, I suggest the following icon:")
+        new_message.markdown("To illustrate the chatbot, I suggest the following icon:")
         new_message.image(icon, width=80)
 
         app.store_usage(
@@ -152,7 +152,7 @@ if create_chatbot:
 
         new_message = st.chat_message("assistant", avatar=LOGO_PATH)
         new_message.markdown(
-            f"""
+            """
             **Your Chatbot is ready!**
             
             You can access it from the welcome page.

@@ -86,7 +86,7 @@ open_chatbot_settings = col1.button(
     icon=":material/settings:",
     disabled=app.auth.user["chatbots"][chatbot_id]["user_role"] != "Admin",
     use_container_width=True,
-    key=f"private_settings"
+    key="private_settings"
 )
 
 if open_chatbot_settings:
