@@ -87,7 +87,7 @@ if create_chatbot:
             )
             new_message.markdown(f"Your chatbot can be named like this: **{title}**")
             new_message.markdown(f"And I'll give him this description: **{description}**")
-        except:
+        except BadOutputFormat:
             title, description = "<TITLE>", "<DESCRIPTION>"
             new_message.markdown(f"Hmm... I failed to define title & description of your chatbot. I'm going to set the title to '**{title}**' and the description to '**{description}**' for now.")
 
