@@ -206,8 +206,8 @@ if __name__ == '__main__':
     ]
 
     for text in texts_dict:
-        d = extract_dict(text)
-        print(d)
+        extracted_dicts = extract_dict(text)
+        print(extracted_dicts)
 
     texts_list = [
         "Here is a list: [1, 2, 3, 4, 5] with some additional text.",
@@ -221,8 +221,8 @@ if __name__ == '__main__':
     ]
 
     for text in texts_list:
-        l = extract_list(text)
-        print(l)
+        extracted_list = extract_list(text)
+        print(extracted_list)
 
     texts_list_of_dicts = [
         "Here is a list of dicts: [{\"key1\": \"value1\"}, {\"key2\": \"value2\"}].",
@@ -234,5 +234,5 @@ if __name__ == '__main__':
     ]
 
     for text in texts_list_of_dicts:
-        ld = extract_list_of_dicts(text)
-        print(ld)
+        extracted_list_of_dicts = extract_list_of_dicts(text)
+        print(extracted_list_of_dicts)
