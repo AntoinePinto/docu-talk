@@ -1,4 +1,20 @@
-# Docu Talk
+<div align="center">
+
+<h1 align="center">
+  <a href="https://docu-talk.ai-apps.cloud/"><img src="./src/frontend/assets/logo_docu_talk.png" width="40"></a>
+  <br>
+  <b>Docu Talk</b>
+  <br>
+</h1>
+
+🔗 [https://docu-talk.ai-apps.cloud](https://docu-talk.ai-apps.cloud/)
+
+![Static Badge](https://img.shields.io/badge/python-3.12-blue)
+![Static Badge](https://img.shields.io/badge/streamlit-1.41.1-red)
+![Static Badge](https://img.shields.io/badge/database-MongoDB-green)
+![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
+
+</div>
 
 Docu Talk is an AI-powered platform that allows you to **create custom chatbots based on your own documents**. 
 
@@ -6,6 +22,8 @@ Docu Talk is an AI-powered platform that allows you to **create custom chatbots 
 - **Sharing**: Invite others to access your Chat Bots
 - **AI Expertise**: Get precise answers with source identification functionality
 - **Easy to use**: Enjoy a clear, simple, and user-friendly interface
+
+Demo video:
 
 https://github.com/user-attachments/assets/6a03b0a1-a549-4e58-9576-2ee25e0b6ba1
 
