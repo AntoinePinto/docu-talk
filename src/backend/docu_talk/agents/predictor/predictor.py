@@ -221,11 +221,11 @@ class Predictor:
 
         data = self.db.get_data(table=self.metric_tables[metric])
 
-        X = self.preprocess(data)
-        Y = [d["value"] for d in data]
+        x = self.preprocess(data)
+        y = [d["value"] for d in data]
 
         model = RandomForestRegressor(n_estimators=100, random_state=42)
-        model.fit(X, Y)
+        model.fit(x, y)
 
         model_path = os.path.join(
             os.path.dirname(__file__),
@@ -263,9 +263,9 @@ class Predictor:
 
         model = self.models[metric]
 
-        X = self.preprocess([data])
+        x = self.preprocess([data])
 
-        predictions = model.predict(X=X)
+        predictions = model.predict(X=x)
 
         prediction = predictions[0]
 

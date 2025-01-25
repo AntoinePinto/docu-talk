@@ -1,22 +1,22 @@
-class InvalidAuthentication(Exception):
+class InvalidAuthenticationError(Exception):
 
     def __init__(self, message="An error has occurred"):
         self.message = message
         super().__init__(self.message)
 
-class TooManyDocuments(Exception):
+class TooManyDocumentsError(Exception):
 
     def __init__(self, message="An error has occurred"):
         self.message = message
         super().__init__(self.message)
 
-class TooManyPages(Exception):
+class TooManyPagesError(Exception):
 
     def __init__(self, message="An error has occurred"):
         self.message = message
         super().__init__(self.message)
 
-class BadOutputFormat(Exception):
+class BadOutputFormatError(Exception):
 
     def __init__(self, message="An error has occurred"):
         self.message = message

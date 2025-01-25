@@ -115,14 +115,14 @@ class Database:
             The ID of the inserted record.
         """
 
-        Table = next(t for t in self.tables if t.__tablename__ == table)
+        table_class = next(t for t in self.tables if t.__tablename__ == table)
 
         from uuid import uuid4
         if "id" not in data:
             data["id"] = str(uuid4())
         data["timestamp"] = datetime.now()
 
-        Table(**data)
+        table_class(**data)
 
         print(f"Inserting a record into table `{table}`")
         self.database[table].insert_one(data)

@@ -10,7 +10,7 @@ from config import (
     PREMIUM_MODEL_NAME
 )
 from docu_talk.base import ChatBot
-from docu_talk.exceptions import BadOutputFormat
+from docu_talk.exceptions import BadOutputFormatError
 from st_docu_talk import StreamlitDocuTalk
 
 app : StreamlitDocuTalk = st.session_state["app"]
@@ -211,7 +211,7 @@ if len(chatbot.service.messages) > 0:
                         chatbot_id=chatbot_id
                     )
 
-                except BadOutputFormat:
+                except BadOutputFormatError:
                     st.markdown("Sorry, an internal error has occurred.")
 
                 finally:

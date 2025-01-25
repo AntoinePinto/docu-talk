@@ -11,7 +11,7 @@ from config import (
     PREMIUM_MODEL_NAME
 )
 
-from docu_talk.exceptions import BadOutputFormat
+from docu_talk.exceptions import BadOutputFormatError
 from st_docu_talk import StreamlitDocuTalk
 from utils.file_io import get_nb_pages_pdf
 
@@ -116,7 +116,7 @@ if create_chatbot:
             new_message.markdown(
                 f"And I'll give him this description: **{description}**"
             )
-        except BadOutputFormat:
+        except BadOutputFormatError:
 
             title, description = "<TITLE>", "<DESCRIPTION>"
             message = TEXTS["failed_title_description"].format(
@@ -161,7 +161,7 @@ if create_chatbot:
                 f"{md_suggested_prompts}"
             )
 
-        except BadOutputFormat:
+        except BadOutputFormatError:
             suggested_prompts = []
             new_message.markdown(
                 "Hmm... I failed to define example prompts for your chatbot. "

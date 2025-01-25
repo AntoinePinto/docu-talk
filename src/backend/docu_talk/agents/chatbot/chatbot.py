@@ -6,7 +6,7 @@ from typing import Generator, Tuple
 from docu_talk.agents.chatbot.generator import Gemini
 from docu_talk.agents.chatbot.icons import get_icon_bytes
 from docu_talk.agents.storage import GoogleCloudStorageManager
-from docu_talk.exceptions import BadOutputFormat
+from docu_talk.exceptions import BadOutputFormatError
 
 from utils.file_io import recursive_read
 
@@ -174,7 +174,7 @@ class ChatBotService:
             desc = extract_dict(response["answer"])
             Desc(**desc)
         except Exception:
-            raise BadOutputFormat("Bad LLM output format")
+            raise BadOutputFormatError("Bad LLM output format")
 
         return desc["title"], desc["description"]
 
@@ -261,7 +261,7 @@ class ChatBotService:
             suggested_prompts = extract_list(response["answer"])
             SuggestedPrompts(items=suggested_prompts)
         except Exception:
-            raise BadOutputFormat("Bad LLM output format")
+            raise BadOutputFormatError("Bad LLM output format")
 
         return suggested_prompts
 
@@ -349,7 +349,7 @@ class ChatBotService:
         try:
             extracted_sources = extract_list_of_dicts(response["answer"])
         except Exception:
-            raise BadOutputFormat("Bad LLM output format")
+            raise BadOutputFormatError("Bad LLM output format")
 
         filenames = [document["filename"] for document in self.documents]
         sources = []

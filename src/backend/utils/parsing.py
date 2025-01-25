@@ -3,7 +3,7 @@ import json
 
 import regex
 
-class UnfoundPattern(Exception):
+class UnfoundPatternError(Exception):
 
     def __init__(self, message="An error has occurred"):
         self.message = message
@@ -31,7 +31,7 @@ def extract_pattern(
 
     Raises
     ------
-    UnfoundPattern
+    UnfoundPatternError
         If no matching pattern is found.
     """
 
@@ -40,7 +40,7 @@ def extract_pattern(
         if match is not None:
             return match.group(0)
 
-    raise UnfoundPattern("Pattern not found")
+    raise UnfoundPatternError("Pattern not found")
 
 def parse_str(text: str):
     """
@@ -58,7 +58,7 @@ def parse_str(text: str):
 
     Raises
     ------
-    UnfoundPattern
+    UnfoundPatternError
         If the string cannot be parsed.
     """
 
@@ -69,7 +69,7 @@ def parse_str(text: str):
         except (SyntaxError, ValueError, json.decoder.JSONDecodeError):
             continue
 
-    raise UnfoundPattern("Pattern not found")
+    raise UnfoundPatternError("Pattern not found")
 
 def correct_dict(d: dict):
     """
@@ -110,15 +110,15 @@ def extract_dict(text: str):
 
     Raises
     ------
-    UnfoundPattern
+    UnfoundPatternError
         If no dictionary pattern is found or parsing fails.
     """
 
     try:
         d = parse_str(text)
         if not isinstance(d, dict):
-            raise UnfoundPattern("Unfound Pattern")
-    except UnfoundPattern:
+            raise UnfoundPatternError("Unfound Pattern")
+    except UnfoundPatternError:
         pattern = extract_pattern(
             text=text,
             patterns=[r"\{(?:[^{}]|(?R))*\}", r"\{\n([\s\S]*?)\n\}", r"\{([\s\S]*?)\}"]
@@ -145,14 +145,14 @@ def extract_list(text):
 
     Raises
     ------
-    UnfoundPattern
+    UnfoundPatternError
         If no list pattern is found or parsing fails.
     """
 
     try:
         pattern = extract_pattern(text, [r'\[\[.*?\]\]', r'\[.*?\]'], regex.DOTALL)
         return parse_str(pattern)
-    except UnfoundPattern:
+    except UnfoundPatternError:
         return []
 
 def extract_list_of_dicts(text):
@@ -177,8 +177,8 @@ def extract_list_of_dicts(text):
         elif isinstance(parsed_text, dict):
             return [parsed_text]
         else:
-            raise UnfoundPattern("Unfound Pattern")
-    except UnfoundPattern:
+            raise UnfoundPatternError("Unfound Pattern")
+    except UnfoundPatternError:
         pass
 
     dict_list = []
@@ -188,7 +188,7 @@ def extract_list_of_dicts(text):
             parsed_text = parse_str(pattern)
             if isinstance(parsed_text, dict):
                 dict_list.append(parsed_text)
-        except UnfoundPattern:
+        except UnfoundPatternError:
             continue
 
     dict_list = [correct_dict(d) for d in dict_list]
