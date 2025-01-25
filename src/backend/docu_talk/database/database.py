@@ -164,7 +164,7 @@ class Database:
         if limit is not None:
             cursor = cursor.limit(4)
 
-        documents = [document for document in cursor]
+        documents = list(cursor)
 
         return documents
 
