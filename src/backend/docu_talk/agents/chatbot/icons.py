@@ -53,5 +53,5 @@ def get_icon_bytes(
 
     byte_array = io.BytesIO()
     image.save(byte_array, format="PNG")
-    
+
     return byte_array.getvalue()

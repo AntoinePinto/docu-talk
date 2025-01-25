@@ -48,7 +48,7 @@ class Gemini:
         location : str or None, optional
             The Vertex AI location (default is None, fetched from the environment).
         """
-        
+
         project_id = get_param_or_env(project_id, "GEMINI_PROJECT_ID")
         location = get_param_or_env(location, "GEMINI_LOCATION")
 
@@ -56,7 +56,7 @@ class Gemini:
             project=project_id,
             location=location
         )
-    
+
     def get_contents(
             self,
             messages: list[str]
@@ -80,7 +80,7 @@ class Gemini:
 
             new_parts = []
             for part in message["parts"]:
-            
+
                 if part.startswith("gs://"):
                     part = {
                         "file_data": {
@@ -92,7 +92,7 @@ class Gemini:
                     part = {
                         "text": part
                     }
-                    
+
                 new_parts.append(part)
 
             message["parts"] = new_parts
@@ -137,25 +137,25 @@ class Gemini:
         )
 
         contents = self.get_contents(messages)
-        
+
         if stream is True:
-            
+
             response = self.get_streamed_response(
                 client=client,
                 contents=contents,
                 **kwargs
             )
-        
+
         else:
-            
+
             response = self.get_unstreamed_response(
                 client=client,
                 contents=contents,
                 **kwargs
             )
-        
+
         return response
-    
+
     def get_streamed_response(
             self,
             client: GenerativeModel,
@@ -238,5 +238,5 @@ class Gemini:
                 "qty": completion.to_dict()["usage_metadata"]["total_token_count"]
             }
         }
-        
+
         return response

@@ -23,18 +23,18 @@ def st_progress(
     function
         The wrapped function with progress indicators.
     """
-    
+
     def decorator(func):
-    
+
         def wrapper(*args, **kwargs):
-            
+
             with st.spinner(in_progress_message):
                 result = func(*args, **kwargs)
                 st.toast(success_message, icon=success_icon)
             return result
-        
+
         return wrapper
-    
+
     return decorator
 
 def st_confirmation_dialog(

@@ -27,7 +27,7 @@ st.markdown(TEXTS["create_chatbot_header"])
 
 with st.container(border=True):
     documents_files = app.form_documents()
-    
+
 create_chatbot = st.button(
     label="Create",
     type="primary",
@@ -41,7 +41,7 @@ if create_chatbot:
     model = PREMIUM_MODEL_NAME
 
     with st.spinner("..."):
-        
+
         nb_documents = len(documents_files)
         if nb_documents > MAX_NB_DOC_PER_CHATBOT:
             st.error(
@@ -65,7 +65,7 @@ if create_chatbot:
             )
 
             total_pages += document["nb_pages"]
-        
+
         if total_pages > MAX_NB_PAGES_PER_CHATBOT:
             st.error(
                 "The total number of pages in the documents must be less than "
@@ -104,7 +104,7 @@ if create_chatbot:
             chatbot_id=chatbot_id,
             documents=documents
         )
-        
+
         new_message = st.chat_message("assistant", avatar=LOGO_PATH)
         try:
             title, description = chatbot.generate_title_description(
@@ -123,7 +123,7 @@ if create_chatbot:
                 title=title,
                 description=description
             )
-            
+
             new_message.markdown(message)
 
         app.store_usage(
@@ -144,23 +144,23 @@ if create_chatbot:
             model_name=chatbot.last_usages["model"],
             qty=chatbot.last_usages["qty"]
         )
-        
+
         new_message = st.chat_message("assistant", avatar=LOGO_PATH)
         try:
-            
+
             suggested_prompts = chatbot.get_suggested_prompts(
                 model=model
             )
-            
+
             md_suggested_prompts = "\n".join(
                 [f"* *{prompt}*" for prompt in suggested_prompts]
             )
-            
+
             new_message.markdown(
                 "Finally, I suggest the following examples of prompts:\n\n"
                 f"{md_suggested_prompts}"
             )
-            
+
         except BadOutputFormat:
             suggested_prompts = []
             new_message.markdown(
@@ -203,7 +203,6 @@ if create_chatbot:
         new_message.markdown(
             """
             **Your Chatbot is ready!**
-            
             You can access it from the welcome page.
             """
         )

@@ -64,7 +64,7 @@ class TokenManager:
             key=self.secret_key,
             algorithm="HS256"
         )
-        
+
         return token
 
     def verify_token(
@@ -86,7 +86,7 @@ class TokenManager:
         """
 
         try:
-            
+
             decoded_token = jwt.decode(
                 jwt=token,
                 key=self.secret_key,
@@ -114,7 +114,7 @@ class TokenManager:
             n += 1
             if n > 15:
                 return
-        
+
         token = self.cookies.get("docu-talk")
 
         return token

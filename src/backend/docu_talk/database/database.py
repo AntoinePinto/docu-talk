@@ -62,7 +62,7 @@ class Database:
         """
 
         self.client.close()
-    
+
     def table_list(self) -> list:
         """
         Retrieves the list of collection names in the database.
@@ -72,7 +72,7 @@ class Database:
         list
             A list of collection names.
         """
-        
+
         return self.database.list_collection_names()
 
     def clear_database(
@@ -87,13 +87,13 @@ class Database:
         collections : list or None, optional
             A list of collections to drop. If None, all collections are dropped.
         """
-        
+
         if collections is None:
             collections = self.database.list_collection_names()
 
         for collection in collections:
             self.database[collection].drop()
-            
+
     def insert_data(
             self,
             table: str,
@@ -126,7 +126,7 @@ class Database:
 
         print(f"Inserting a record into table `{table}`")
         self.database[table].insert_one(data)
-        
+
         return data["id"]
 
     def get_data(
@@ -163,11 +163,11 @@ class Database:
 
         if limit is not None:
             cursor = cursor.limit(4)
-        
+
         documents = [document for document in cursor]
-        
+
         return documents
-    
+
     def update_data(
             self,
             table: str,
@@ -191,7 +191,7 @@ class Database:
         pymongo.results.UpdateResult
             The result of the update operation.
         """
-        
+
         result = self.database[table].update_one(
             filter=filter,
             update={'$set': updates},
@@ -199,7 +199,7 @@ class Database:
         )
 
         return result
-    
+
     def delete_data(
             self,
             table: str,
@@ -222,5 +222,5 @@ class Database:
         """
 
         result = self.database[table].delete_many(filter)
-        
+
         return result

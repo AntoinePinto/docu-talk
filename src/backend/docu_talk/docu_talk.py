@@ -27,7 +27,7 @@ class DocuTalk:
         Initializes the DocuTalk instance with storage, database, and prediction
         services.
         """
-        
+
         self.storage_manager = GoogleCloudStorageManager(
             project_id=os.getenv("GCP_PROJECT_ID"),
             bucket_name=os.getenv("GOOGLE_CLOUD_STORAGE_BUCKET")
@@ -136,7 +136,7 @@ class DocuTalk:
         )
 
         return password
-    
+
     def check_login(
             self,
             email: str,
@@ -169,7 +169,7 @@ class DocuTalk:
             return False
         else:
             return True
-        
+
     def get_user_chatbots(
             self,
             user_id: str
@@ -212,7 +212,7 @@ class DocuTalk:
                 )
             else:
                 chatbot["user_role"] = "User"
-            
+
             user_chatbots[chatbot["id"]] = chatbot
 
         return user_chatbots
@@ -341,7 +341,7 @@ class DocuTalk:
             table="Documents",
             filter={"chatbot_id": chatbot_id, "filename": filename}
         )
-    
+
     def get_filenames(
             self,
             chatbot_id: str
@@ -407,7 +407,7 @@ class DocuTalk:
         )
 
         return chatbot_service
-    
+
     def create_chatbot(
             self,
             chatbot_id: str,
@@ -483,7 +483,7 @@ class DocuTalk:
             user_id=created_by,
             role="Admin"
         )
-    
+
     def update_chatbot(
             self,
             chatbot_id: str,
@@ -505,7 +505,7 @@ class DocuTalk:
         icon : bytes, optional
             The new icon for the chatbot.
         """
-        
+
         updates = {}
         if title is not None:
             updates["title"] = title
@@ -608,7 +608,7 @@ class DocuTalk:
                 "user_id": user_id
             }
         )
-    
+
     def start_chat(
             self,
             chatbot_id: str
@@ -659,7 +659,7 @@ class DocuTalk:
         )
 
         return chatbot
-    
+
     def get_consumed_price(
             self,
             user_id: str
@@ -698,7 +698,7 @@ class DocuTalk:
         consumed_price = sum([usage["price"] for usage in usages_data])
 
         return consumed_price
-    
+
     def store_usage(
             self,
             user_id: str,

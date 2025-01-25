@@ -195,14 +195,14 @@ with tab_documents:
                     f"than {MAX_NB_DOC_PER_CHATBOT}."
                 )
             else:
-            
+
                 total_pages = sum(
                     [document["nb_pages"] for document in chatbot.service.documents]
                 )
                 for document in documents:
                     document["nb_pages"] = get_nb_pages_pdf(document["bytes"])
                     total_pages += document["nb_pages"]
-                
+
                 if total_pages > MAX_NB_PAGES_PER_CHATBOT:
                     st.error(
                         "The total number of pages in the documents must be less "

@@ -24,7 +24,7 @@ class MailingBot:
         encoded_logo : bytes
             The base64-encoded logo to embed in email templates.
         """
-        
+
         self.email_service = AWSMailSES(
             server_public_key=os.getenv("AWS_SES_SERVER_PUBLIC_KEY"),
             server_secret_key=os.getenv("AWS_SES_SERVER_SECRET_KEY"),
@@ -66,7 +66,7 @@ class MailingBot:
             id=id,
             password=password
         )
-        
+
         self.email_service.send_email(
             sender="support@ai-apps.cloud",
             recipient=recipient,
@@ -100,7 +100,7 @@ class MailingBot:
             sharing_name=sharing_name,
             chatbot_name=chatbot_name
         )
-        
+
         self.email_service.send_email(
             sender="support@ai-apps.cloud",
             recipient=recipient,

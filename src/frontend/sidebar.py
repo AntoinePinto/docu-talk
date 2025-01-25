@@ -36,7 +36,7 @@ class Sidebar:
         docu_talk : DocuTalk
             The DocuTalk service instance.
         """
-        
+
         self.auth = auth
         self.docu_talk = docu_talk
 
@@ -46,7 +46,7 @@ class Sidebar:
         Displays the Terms of Use dialog to the user and updates their acceptance
         status.
         """
-        
+
         st.markdown(TEXTS["terms_of_use"])
 
         if not self.auth.user["terms_of_use_displayed"]:
@@ -96,7 +96,7 @@ class Sidebar:
         self.credit_placeholder.html(html)
 
         return remaining_credits
-    
+
     def display_waiting_tips(self):
         """
         Displays a list of waiting tips in the sidebar, selected randomly.
@@ -143,7 +143,7 @@ class Sidebar:
             )
 
             self.display_waiting_tips()
-             
+
             st.html(templates.about_html)
 
             if remaining_credits < 0:

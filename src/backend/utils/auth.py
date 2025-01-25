@@ -38,24 +38,24 @@ def generate_password(length: int = 12):
     str
         The generated password.
     """
-    
+
     list_character_types = [
         "!@#$%&*?",
         string.ascii_uppercase,
         string.ascii_lowercase,
         string.digits
     ]
-    
+
     character_pool, password = "", []
     for character_types in list_character_types:
         password.append(random.choice(character_types))
         character_pool += character_types
-    
+
     while len(password) < length:
         password.append(random.choice(character_pool))
-    
+
     random.shuffle(password)
-    
+
     return ''.join(password)
 
 def hash_password(password: str):
@@ -94,5 +94,5 @@ def verify_password(
     bool
         True if the password matches the hash, False otherwise.
     """
-    
+
     return checkpw(password.encode('utf-8'), hashed)

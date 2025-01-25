@@ -36,7 +36,7 @@ class Auth:
         mailing_bot : MailingBot
             The mailing bot service instance.
         """
-        
+
         self.docu_talk = docu_talk
         self.mailing_bot = mailing_bot
         self.logged_in = False
@@ -54,7 +54,7 @@ class Auth:
         Checks the validity of the JWT token stored in cookies.
         If valid, retrieves the associated user; otherwise, deletes the token.
         """
-        
+
         token = self.token_manager.get_token()
 
         if token is not None:
@@ -131,7 +131,7 @@ class Auth:
                     "Successful registration. You have received an e-mail "
                     "containing your login details (check your spam)."
                 )
-                
+
                 st.balloons()
 
     def sign_in(

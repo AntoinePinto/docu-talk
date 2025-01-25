@@ -25,7 +25,7 @@ def get_param_or_env(
     Exception
         If neither the parameter nor the environment variable is set.
     """
-    
+
     if param is not None:
         return param
     elif os.getenv(env_var) is not None:

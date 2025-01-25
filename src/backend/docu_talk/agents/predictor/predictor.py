@@ -43,7 +43,7 @@ class Predictor:
         """
         Initializes the Predictor with database and preloaded models.
         """
-        
+
         self.db = Database(
             uri=os.getenv("MONGO_DB_URI"),
             database_name=os.getenv("MONGO_DB_NAME")
@@ -111,7 +111,7 @@ class Predictor:
         chatbot_id : str
             The unique identifier of the chatbot.
         """
-        
+
         self.log_metric(
             metric="create_chatbot_duration",
             value=duration,
@@ -150,7 +150,7 @@ class Predictor:
         chatbot_id : str
             The unique identifier of the chatbot.
         """
-        
+
         self.log_metric(
             metric="ask_chatbot_duration",
             value=duration,
@@ -190,7 +190,7 @@ class Predictor:
         pd.DataFrame
             A preprocessed pandas DataFrame.
         """
-        
+
         df = pd.DataFrame(data)
 
         for col in ["metadata", "value", "_id", "id"]:
@@ -232,7 +232,7 @@ class Predictor:
             "models",
             f"{metric}.pickle"
         )
-        
+
         joblib.dump(model, model_path)
 
     def predict(
@@ -266,9 +266,9 @@ class Predictor:
         X = self.preprocess([data])
 
         predictions = model.predict(X=X)
-        
+
         prediction = predictions[0]
-        
+
         return prediction
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ import json
 import regex
 
 class UnfoundPattern(Exception):
-    
+
     def __init__(self, message="An error has occurred"):
         self.message = message
         super().__init__(self.message)
@@ -39,7 +39,7 @@ def extract_pattern(
         match = regex.search(pattern, text, *args)
         if match is not None:
             return match.group(0)
-    
+
     raise UnfoundPattern("Pattern not found")
 
 def parse_str(text: str):
@@ -63,12 +63,12 @@ def parse_str(text: str):
     """
 
     for parser in (ast.literal_eval, json.loads):
-    
+
         try:
             return parser(text)
         except (SyntaxError, ValueError, json.decoder.JSONDecodeError):
             continue
-    
+
     raise UnfoundPattern("Pattern not found")
 
 def correct_dict(d: dict):
@@ -124,7 +124,7 @@ def extract_dict(text: str):
             patterns=[r"\{(?:[^{}]|(?R))*\}", r"\{\n([\s\S]*?)\n\}", r"\{([\s\S]*?)\}"]
         )
         d = parse_str(pattern)
-        
+
     d = correct_dict(d)
 
     return d
@@ -148,13 +148,13 @@ def extract_list(text):
     UnfoundPattern
         If no list pattern is found or parsing fails.
     """
-    
+
     try:
         pattern = extract_pattern(text, [r'\[\[.*?\]\]', r'\[.*?\]'], regex.DOTALL)
         return parse_str(pattern)
     except UnfoundPattern:
         return []
-    
+
 def extract_list_of_dicts(text):
     """
     Extracts a list of dictionaries from a text string.
@@ -169,7 +169,7 @@ def extract_list_of_dicts(text):
     list of dict
         The extracted list of dictionaries.
     """
-    
+
     try:
         parsed_text = parse_str(text)
         if isinstance(parsed_text, list):

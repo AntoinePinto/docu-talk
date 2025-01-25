@@ -58,7 +58,7 @@ def retry_with_exponential_backoff(
                         f"{type(e).__name__}: {e} => Retry in "
                         f"{round(delay, 2)} seconds"
                     )
-                    
+
                     time.sleep(delay)
 
                 except Exception as e:

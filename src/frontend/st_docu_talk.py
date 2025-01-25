@@ -28,9 +28,9 @@ class StreamlitDocuTalk:
         Initializes the StreamlitDocuTalk instance with authentication, mailing,
         and sidebar services.
         """
-        
+
         self.docu_talk = DocuTalk()
-        
+
         self.mailing_bot = MailingBot(
             encoded_logo=ENCODED_LOGO
         )
@@ -80,7 +80,7 @@ class StreamlitDocuTalk:
         if display_sidebar:
             if not self.auth.user["terms_of_use_displayed"]:
                 self.sidebar.display_terms_of_use()
-                
+
             self.sidebar.display_sidebar()
 
         if back_page_path is not None:
@@ -135,7 +135,7 @@ class StreamlitDocuTalk:
 
         self.docu_talk.delete_user(self.auth.user["email"])
         self.auth.logout()
-    
+
     @st_progress()
     def update_suggested_prompt(
             self,
@@ -255,7 +255,7 @@ class StreamlitDocuTalk:
         chatbot_name : str
             Name of the chatbot.
         """
-        
+
         self.docu_talk.share_chatbot(
             chatbot_id=chatbot_id,
             user_id=user_email,
@@ -284,7 +284,7 @@ class StreamlitDocuTalk:
         user_email : str
             Email of the user whose access will be removed.
         """
-        
+
         self.docu_talk.remove_access_chatbot(
             chatbot_id=chatbot_id,
             user_id=user_email
@@ -429,7 +429,7 @@ class StreamlitDocuTalk:
         )
 
         return title
-    
+
     def form_chatbot_description(
             self,
             disabled: bool = False,

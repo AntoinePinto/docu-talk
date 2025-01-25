@@ -25,11 +25,11 @@ class AWSMailSES:
         region : str or None, optional
             The AWS region for the SES service.
         """
-        
+
         server_public_key = get_param_or_env(server_public_key, "AWS_SERVER_PUBLIC_KEY")
         server_secret_key = get_param_or_env(server_secret_key, "AWS_SERVER_SECRET_KEY")
         region = get_param_or_env(region, "AWS_REGION")
-        
+
         self.client = boto3.client(
             "ses",
             aws_access_key_id=server_public_key,
@@ -67,7 +67,7 @@ class AWSMailSES:
         bcc_recipient : str or None, optional
             The email address for BCC (default is None).
         """
-        
+
         destination = {
             "ToAddresses": [
                 recipient,
@@ -78,7 +78,7 @@ class AWSMailSES:
             destination["BccAddresses"] = [
                 bcc_recipient,
             ]
-        
+
         self.client.send_email(
             Source=sender,
             Destination=destination,

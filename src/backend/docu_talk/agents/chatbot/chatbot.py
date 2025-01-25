@@ -53,14 +53,14 @@ class ChatBotService:
         storage_manager : GoogleCloudStorageManager
             The storage manager for handling file storage operations.
         """
-        
+
         self.documents = documents
-        
+
         self.gemini = Gemini(
             project_id=os.getenv("GCP_PROJECT_ID"),
             location=os.getenv("GCP_LOCATION")
         )
-        
+
         self.storage_manager = storage_manager
 
         self.messages = []
@@ -126,13 +126,13 @@ class ChatBotService:
 
         answer = ""
         for part in stream:
-    
+
             if isinstance(part, str):
                 answer += part
                 yield part
             else:
                 self.last_usages = part
-    
+
         self.messages.append(
             {
                 "role": "assistant",
@@ -177,7 +177,7 @@ class ChatBotService:
             raise BadOutputFormat("Bad LLM output format")
 
         return desc["title"], desc["description"]
-    
+
     def generate_icon(
             self,
             description: str,
@@ -300,7 +300,7 @@ class ChatBotService:
         messages.extend(
             [{"role": m["role"], "parts": [m["content"]]} for m in self.messages]
         )
-        
+
         response = self.gemini.get_answer(
             messages=messages,
             stream=True,
@@ -309,7 +309,7 @@ class ChatBotService:
         )
 
         return self.return_streamed_response(response)
-    
+
     def get_last_message_sources(
             self,
             model: str = "gemini-1.5-flash-002",
@@ -354,7 +354,7 @@ class ChatBotService:
         filenames = [document["filename"] for document in self.documents]
         sources = []
         for extracted_source in extracted_sources:
-            
+
             try:
                 Source(**extracted_source)
             except Exception:

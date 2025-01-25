@@ -72,7 +72,7 @@ with popover:
         signed_url = app.docu_talk.storage_manager.generate_signed_url(document["uri"])
 
         subcol0, subcol1 = st.columns([1, 5], vertical_alignment="center")
-        
+
         selected = subcol0.checkbox(
             label="check",
             label_visibility="collapsed",
@@ -99,15 +99,15 @@ if open_chatbot_settings:
 
 if len(chatbot.suggested_prompts) > 2:
     random_prompts = random.sample(chatbot.suggested_prompts, 3)
-    
+
     suggested_prompt_list = "\n".join(
         [f"*  *{prompt['prompt']}*" for prompt in random_prompts]
     )
-    
+
     markdown = TEXTS["suggested_prompts"].format(
         suggested_prompt_list=suggested_prompt_list
     )
-    
+
     new_message.markdown(markdown)
 
 for msg in chatbot.service.messages:
@@ -138,13 +138,13 @@ if message := st.chat_input("Your message"):
         with st.spinner(f"Estimated duration: {estimated_duration:.0f} seconds..."):
 
             start_time = datetime.now()
-            
+
             answer = chatbot.service.ask(
                 message=message,
                 model=model,
                 document_ids=selected_document_ids
             )
-            
+
             message_placeholder.write_stream(answer)
 
             app.store_usage(
@@ -178,11 +178,11 @@ if len(chatbot.service.messages) > 0:
                     "timestamp": datetime.now()
                 }
             )
-            
+
             message_placeholder = st.empty()
 
             with st.spinner(f"Estimated duration: {estimated_duration:.0f} seconds..."):
-                
+
                 try:
 
                     start_time = datetime.now()

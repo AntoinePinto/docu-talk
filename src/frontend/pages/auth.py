@@ -51,12 +51,12 @@ with col1:
             )
 
         if sign_in_button:
-                
+
             app.auth.sign_in(
                 email=email.lower(),
                 password=password
             )
-                    
+
         with sign_up:
 
             col0, col1 = st.columns(2)
@@ -80,7 +80,7 @@ with col1:
             )
 
         if sign_up_button:
-            
+
             app.auth.sign_up(
                 email=email.lower(),
                 first_name=first_name,
@@ -90,7 +90,7 @@ with col1:
         if DISPLAY_GUEST_MODE:
 
             st.markdown("___")
-        
+
             st.markdown("#### Or start in guest mode (Limited features)")
 
             sign_guest_button = st.form_submit_button(

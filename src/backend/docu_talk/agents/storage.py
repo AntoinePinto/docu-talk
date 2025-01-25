@@ -29,7 +29,7 @@ class GoogleCloudStorageManager:
 
         self.bucket_name = bucket_name
         self.bucket = storage.Client(project_id).bucket(bucket_name)
-    
+
     def save_from_file(
             self,
             file: str,
@@ -53,12 +53,12 @@ class GoogleCloudStorageManager:
 
         blob = self.bucket.blob(gcs_path)
         blob.upload_from_string(file, content_type="application/pdf")
-        
+
         uri = f"gs://{self.bucket_name}/{gcs_path}"
         public_path = f"https://storage.cloud.google.com/{self.bucket_name}/{gcs_path}"
 
         return uri, public_path
-    
+
     def get_blob_name(
             self,
             uri: str
@@ -85,7 +85,7 @@ class GoogleCloudStorageManager:
         parsed_uri = urlparse(uri)
         if parsed_uri.scheme != 'gs':
             raise ValueError("Invalid URI scheme. Expected 'gs://'.")
-        
+
         blob_name = parsed_uri.path.lstrip('/')
 
         return blob_name
@@ -151,7 +151,7 @@ class GoogleCloudStorageManager:
         directory_path : str
             The directory path in the bucket. Should end with a '/'.
         """
-        
+
         if not directory_path.endswith('/'):
             directory_path += '/'
 

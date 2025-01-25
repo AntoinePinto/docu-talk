@@ -31,18 +31,18 @@ def recursive_read(
         A dictionary where keys are file names (or folder names for nested structures)
         and values are file contents or nested dictionaries.
     """
-    
+
     result: Dict[str, Any] = {}
-    
+
     for item in os.listdir(folder):
         item_path = os.path.join(folder, item)
         if os.path.isdir(item_path):
             result[item] = recursive_read(item_path, extensions=extensions)
         else:
             name, extension = os.path.splitext(item)
-            
+
             if extension.endswith(extensions):
-                
+
                 if remove_extension_in_key_name:
                     key = name
                 else:
@@ -53,7 +53,7 @@ def recursive_read(
                         result[key] = f.read()
                 else:
                     result[key] = file.load(item_path)
-    
+
     return result
 
 def get_encoded_image(path):
@@ -90,7 +90,7 @@ def get_nb_pages_pdf(pdf_bytes):
     int
         The number of pages in the PDF document.
     """
-    
+
     pdf_document = fitz.open(stream=pdf_bytes, filetype="pdf")
-    
+
     return pdf_document.page_count
