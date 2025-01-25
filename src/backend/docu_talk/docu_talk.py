@@ -1,20 +1,13 @@
 import os
-
-from typing import Any
-
 from datetime import datetime, timedelta
+from typing import Any
 from uuid import uuid4
 
-from docu_talk.agents import(
-    ChatBotService,
-    GoogleCloudStorageManager,
-    Predictor
-)
-
+from docu_talk.agents import ChatBotService, GoogleCloudStorageManager, Predictor
 from docu_talk.base import ChatBot
-
 from docu_talk.database.database import Database
 from utils.auth import generate_password, hash_password, verify_password
+
 
 class DocuTalk:
     """

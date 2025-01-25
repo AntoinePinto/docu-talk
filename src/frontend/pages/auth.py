@@ -1,9 +1,5 @@
 import streamlit as st
-
-from config import (
-    DISPLAY_GUEST_MODE,
-    TEXTS
-)
+from config import DISPLAY_GUEST_MODE, TEXTS
 from st_docu_talk import StreamlitDocuTalk
 
 app : StreamlitDocuTalk = st.session_state["app"]

@@ -2,6 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
+
 class Source(BaseModel):
     filename: str
     page: int

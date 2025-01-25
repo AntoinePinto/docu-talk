@@ -1,7 +1,6 @@
 import base64
 import json
 import os
-
 from string import Template
 
 active_dir = os.path.dirname(__file__)

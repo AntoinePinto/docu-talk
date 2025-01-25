@@ -1,11 +1,10 @@
 import base64
 import os
-
-from typing import Dict, Any
+from typing import Any, Dict
 
 import fitz
-
 from easyenvi import file
+
 
 def recursive_read(
         folder: str,

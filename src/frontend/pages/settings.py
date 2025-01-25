@@ -1,5 +1,4 @@
 import streamlit as st
-
 from config import TEXTS
 from st_docu_talk import StreamlitDocuTalk
 

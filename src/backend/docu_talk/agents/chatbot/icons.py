@@ -3,6 +3,7 @@ import os
 
 from PIL import Image, ImageDraw, ImageFont
 
+
 def get_icon_bytes(
         icon_id: str,
         size: int = 256,

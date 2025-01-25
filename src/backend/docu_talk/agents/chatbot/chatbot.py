@@ -1,28 +1,16 @@
 import json
 import logging
 import os
-
 from typing import Generator, Tuple
 
 from docu_talk.agents.chatbot.generator import Gemini
 from docu_talk.agents.chatbot.icons import get_icon_bytes
 from docu_talk.agents.storage import GoogleCloudStorageManager
 from docu_talk.exceptions import BadOutputFormatError
-
 from utils.file_io import recursive_read
+from utils.parsing import extract_dict, extract_list, extract_list_of_dicts
 
-from utils.parsing import (
-    extract_list_of_dicts,
-    extract_list,
-    extract_dict
-)
-
-from .validation import (
-    Source,
-    Icon,
-    Desc,
-    SuggestedPrompts
-)
+from .validation import Desc, Icon, Source, SuggestedPrompts
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,7 @@
 import json
 import os
 
-from utils.file_io import recursive_read, get_encoded_image
+from utils.file_io import get_encoded_image, recursive_read
 
 LOGO_PATH = os.path.join(os.path.dirname(__file__), "assets", "logo_docu_talk.png")
 ENCODED_LOGO = get_encoded_image(path=LOGO_PATH)

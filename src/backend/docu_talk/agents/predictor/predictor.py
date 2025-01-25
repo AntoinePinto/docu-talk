@@ -1,12 +1,10 @@
-import joblib
 import os
 import sys
+from typing import Any, Literal
 
-from dotenv import load_dotenv
-from typing import Literal, Any
-
+import joblib
 import pandas as pd
-
+from dotenv import load_dotenv
 from sklearn.ensemble import RandomForestRegressor
 
 load_dotenv()

@@ -1,19 +1,17 @@
 import os
-
 from uuid import uuid4
 
 import streamlit as st
-
+from auth.cookies import TokenManager
 from config import (
+    GUEST_PERIOD_DOLLAR_AMOUNT,
     TOKEN_EXPIRATION_HOURS,
     USER_PERIOD_DOLLAR_AMOUNT,
-    GUEST_PERIOD_DOLLAR_AMOUNT
 )
-
-from auth.cookies import TokenManager
 from docu_talk.docu_talk import DocuTalk
 from mailing.mailing_bot import MailingBot
 from utils.auth import is_valid_email
+
 
 class Auth:
     """

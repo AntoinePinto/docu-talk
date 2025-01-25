@@ -2,7 +2,8 @@ import re
 import secrets
 import string
 
-from bcrypt import hashpw, gensalt, checkpw
+from bcrypt import checkpw, gensalt, hashpw
+
 
 def is_valid_email(email: str):
     """

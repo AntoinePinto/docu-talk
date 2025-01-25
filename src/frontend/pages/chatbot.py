@@ -1,14 +1,8 @@
 import random
-
 from datetime import datetime
 
 import streamlit as st
-
-from config import (
-    TEXTS,
-    BASIC_MODEL_NAME,
-    PREMIUM_MODEL_NAME
-)
+from config import BASIC_MODEL_NAME, PREMIUM_MODEL_NAME, TEXTS
 from docu_talk.base import ChatBot
 from docu_talk.exceptions import BadOutputFormatError
 from st_docu_talk import StreamlitDocuTalk

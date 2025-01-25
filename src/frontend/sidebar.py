@@ -1,19 +1,12 @@
 import random
-
 from string import Template
 
 import streamlit as st
-
 from assets import templates
 from auth.auth import Auth
+from config import BASE_URL, CREDIT_EXCHANGE_RATE, ENCODED_LOGO, TEXTS
 from docu_talk.docu_talk import DocuTalk
 
-from config import (
-    ENCODED_LOGO,
-    BASE_URL,
-    TEXTS,
-    CREDIT_EXCHANGE_RATE
-)
 
 class Sidebar:
     """

@@ -1,12 +1,11 @@
 from typing import Generator
 
 import vertexai
-
 from google.api_core.exceptions import ResourceExhausted
+from utils.decorators import retry_with_exponential_backoff
+from utils.misc import get_param_or_env
 from vertexai.generative_models import GenerativeModel, SafetySetting
 
-from utils.misc import get_param_or_env
-from utils.decorators import retry_with_exponential_backoff
 
 class Gemini:
     """

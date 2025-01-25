@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def st_progress(
         in_progress_message="...",
         success_message="Success",

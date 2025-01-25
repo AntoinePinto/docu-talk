@@ -1,19 +1,18 @@
 import streamlit as st
-
 from auth.auth import Auth
+from config import (
+    CREDIT_EXCHANGE_RATE,
+    ENCODED_LOGO,
+    LOGO_PATH,
+    MAX_NB_DOC_PER_CHATBOT,
+    MAX_NB_PAGES_PER_CHATBOT,
+    TEXTS,
+)
 from docu_talk.docu_talk import DocuTalk
 from mailing.mailing_bot import MailingBot
 from sidebar import Sidebar
-from st_utils.decorators import st_progress, st_confirmation_dialog
+from st_utils.decorators import st_confirmation_dialog, st_progress
 
-from config import (
-    LOGO_PATH,
-    ENCODED_LOGO,
-    TEXTS,
-    CREDIT_EXCHANGE_RATE,
-    MAX_NB_DOC_PER_CHATBOT,
-    MAX_NB_PAGES_PER_CHATBOT
-)
 
 class StreamlitDocuTalk:
     """

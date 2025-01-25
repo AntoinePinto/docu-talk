@@ -3,6 +3,7 @@ import json
 
 import regex
 
+
 class UnfoundPatternError(Exception):
 
     def __init__(self, message="An error has occurred"):

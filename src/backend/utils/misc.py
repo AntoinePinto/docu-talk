@@ -1,5 +1,6 @@
 import os
 
+
 def get_param_or_env(
         param: str | None,
         env_var: str

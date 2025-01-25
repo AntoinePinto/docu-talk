@@ -1,6 +1,6 @@
 import boto3
-
 from utils.misc import get_param_or_env
+
 
 class AWSMailSES:
     """

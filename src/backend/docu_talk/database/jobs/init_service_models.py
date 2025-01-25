@@ -1,11 +1,10 @@
 import json
 import os
 import sys
-
 from datetime import datetime
-from dotenv import load_dotenv
 from uuid import uuid4
 
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
 sys.path.append("src/backend")

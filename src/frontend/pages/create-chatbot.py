@@ -2,15 +2,13 @@ from datetime import datetime
 from uuid import uuid4
 
 import streamlit as st
-
 from config import (
     LOGO_PATH,
-    TEXTS,
     MAX_NB_DOC_PER_CHATBOT,
     MAX_NB_PAGES_PER_CHATBOT,
-    PREMIUM_MODEL_NAME
+    PREMIUM_MODEL_NAME,
+    TEXTS,
 )
-
 from docu_talk.exceptions import BadOutputFormatError
 from st_docu_talk import StreamlitDocuTalk
 from utils.file_io import get_nb_pages_pdf

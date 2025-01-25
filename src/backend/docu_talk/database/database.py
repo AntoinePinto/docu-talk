@@ -1,20 +1,20 @@
 from datetime import datetime
 from typing import Union
 
+from docu_talk.database.base import (
+    Access,
+    AskChatbotDuration,
+    AskChatbotTokenCount,
+    Chatbot,
+    CreateChatbotDuration,
+    Document,
+    ServiceModels,
+    SuggestedPrompt,
+    Usage,
+    User,
+)
 from pymongo import MongoClient
 
-from docu_talk.database.base import (
-    User,
-    Usage,
-    ServiceModels,
-    Chatbot,
-    Document,
-    Access,
-    SuggestedPrompt,
-    CreateChatbotDuration,
-    AskChatbotDuration,
-    AskChatbotTokenCount
-)
 
 class Database:
     """
