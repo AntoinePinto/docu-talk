@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 from typing import Generator, Tuple
@@ -22,6 +23,8 @@ from .validation import (
     Desc,
     SuggestedPrompts
 )
+
+logger = logging.getLogger(__name__)
 
 path = os.path.join(os.path.dirname(__file__), "src", "icons.json")
 with open(path) as f:
@@ -357,7 +360,11 @@ class ChatBotService:
 
             try:
                 Source(**extracted_source)
-            except Exception:
+            except Exception as e:
+                logger.warning(
+                    f"Failed to process extracted source: {extracted_source}. "
+                    f"Error: {e}"
+                )
                 continue
 
             if extracted_source["filename"] not in filenames:

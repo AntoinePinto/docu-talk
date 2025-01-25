@@ -52,7 +52,7 @@ def retry_with_exponential_backoff(
                             f"Maximum number of retries ({max_retries}) exceeded."
                         ) from e
 
-                    delay *= exponential_base * (1 + jitter * random.random())
+                    delay *= exponential_base * (1 + jitter * random.random()) # noqa: S311
 
                     print(
                         f"{type(e).__name__}: {e} => Retry in "

@@ -1,5 +1,5 @@
-import random
 import re
+import secrets
 import string
 
 from bcrypt import hashpw, gensalt, checkpw
@@ -48,13 +48,13 @@ def generate_password(length: int = 12):
 
     character_pool, password = "", []
     for character_types in list_character_types:
-        password.append(random.choice(character_types))
+        password.append(secrets.choice(character_types))
         character_pool += character_types
 
     while len(password) < length:
-        password.append(random.choice(character_pool))
+        password.append(secrets.choice(character_pool))
 
-    random.shuffle(password)
+    secrets.SystemRandom().shuffle(password)
 
     return ''.join(password)
 
