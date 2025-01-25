@@ -25,8 +25,8 @@ def is_valid_email(email: str):
 def generate_password(length: int = 12):
     """
     Generates a random password with a specified length, ensuring it includes at least 
-    one character from each of the following categories: uppercase letters, lowercase letters, 
-    digits, and special characters.
+    one character from each of the following categories: uppercase letters, lowercase 
+    letters, digits, and special characters.
 
     Parameters
     ----------

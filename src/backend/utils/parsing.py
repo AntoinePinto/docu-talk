@@ -119,7 +119,10 @@ def extract_dict(text: str):
         if not isinstance(d, dict):
             raise UnfoundPattern("Unfound Pattern")
     except UnfoundPattern:
-        pattern = extract_pattern(text, [r"\{(?:[^{}]|(?R))*\}", r"\{\n([\s\S]*?)\n\}", r"\{([\s\S]*?)\}"]) 
+        pattern = extract_pattern(
+            text=text, 
+            patterns=[r"\{(?:[^{}]|(?R))*\}", r"\{\n([\s\S]*?)\n\}", r"\{([\s\S]*?)\}"]
+        ) 
         d = parse_str(pattern)
         
     d = correct_dict(d)
@@ -195,12 +198,21 @@ def extract_list_of_dicts(text):
 if __name__ == '__main__':
 
     texts_dict = [
-        "Some text before the dictionary {\"key1\": \"value1\", \"key2\": \"value2\"} and some text after.",
+        (
+            "Some text before the dictionary {\"key1\": \"value1\", \"key2\": "
+            "\"value2\"} and some text after."
+        ),
         "Here is a dict: {\"is_active\": \"True\", \"is_deleted\": \"False\"}",
         "Start: {'user': 'admin', 'password': '1234'} End.",
-        "Data contains: {\"user\": {\"name\": \"Alice\", \"age\": 30}, \"active\": \"True\"}",
+        (
+            "Data contains: {\"user\": {\"name\": \"Alice\", \"age\": 30}, "
+            "\"active\": \"True\"}"
+        ),
         "Here is the data:\n{\n\"key1\": \"value1\",\n\"key2\": \"value2\"\n}",
-        "Info: {\"name\": \"John Doe\", \"email\": \"john.doe@example.com\", \"active\": \"True\"}",
+        (
+            "Info: {\"name\": \"John Doe\", \"email\": \"john.doe@example.com\", "
+            "\"active\": \"True\"}"
+        ),
         "Numbers and types: {\"age\": 25, \"score\": 99.5, \"active\": \"False\"}",
         "First dict: {\"a\": 1} and second dict: {\"b\": 2}"
     ]
@@ -226,11 +238,16 @@ if __name__ == '__main__':
 
     texts_list_of_dicts = [
         "Here is a list of dicts: [{\"key1\": \"value1\"}, {\"key2\": \"value2\"}].",
-        "Nested dictionaries: [{\"user\": {\"name\": \"Alice\"}}, {\"settings\": {\"theme\": \"dark\"}}].",
-        "Multiple dicts: {\"key1\": \"value1\"}, {\"key2\": \"value2\"}, and {\"key3\": \"value3\"}.",
+        (
+            "Nested dictionaries: [{\"user\": {\"name\": \"Alice\"}}, "
+            "{\"settings\": {\"theme\": \"dark\"}}]."
+        ),
+        (
+            "Multiple dicts: {\"key1\": \"value1\"}, {\"key2\": \"value2\"}, "
+            "and {\"key3\": \"value3\"}."
+        ),
         "Single dict in text: {\"name\": \"John Doe\", \"age\": 30}.",
         "Dictionary with booleans: [{\"active\": \"True\"}, {\"deleted\": \"False\"}].",
-        "A mixed content: Here is some text {\"key\": \"value\"} and a list [{\"k1\": \"v1\"}, {\"k2\": \"v2\"}]."
     ]
 
     for text in texts_list_of_dicts:

@@ -9,7 +9,8 @@ def retry_with_exponential_backoff(
         errors: tuple = (AttributeError,),
     ):
     """
-    A decorator to retry a function with exponential backoff in case of specified errors.
+    A decorator to retry a function with exponential backoff in case of specified 
+    errors.
 
     Parameters
     ----------
@@ -22,7 +23,7 @@ def retry_with_exponential_backoff(
     max_retries : int, optional
         The maximum number of retries before raising an exception (default is 5).
     errors : tuple, optional
-        A tuple of exception classes to catch and retry upon (default is (AttributeError,)).
+        A tuple of exception classes to catch and retry upon.
 
     Returns
     -------
@@ -47,11 +48,17 @@ def retry_with_exponential_backoff(
                 except errors as e:
                     num_retries += 1
                     if num_retries > max_retries:
-                        raise Exception(f"Maximum number of retries ({max_retries}) exceeded.")
+                        raise Exception(
+                            f"Maximum number of retries ({max_retries}) exceeded."
+                        )
 
                     delay *= exponential_base * (1 + jitter * random.random())
 
-                    print(f"{type(e).__name__}: {e} => Retry in {round(delay, 2)} seconds")
+                    print(
+                        f"{type(e).__name__}: {e} => Retry in "
+                        f"{round(delay, 2)} seconds"
+                    )
+                    
                     time.sleep(delay)
 
                 except Exception as e:

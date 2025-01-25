@@ -17,7 +17,8 @@ from config import (
 
 class Sidebar:
     """
-    A class for managing and displaying the Streamlit sidebar in the DocuTalk application.
+    A class for managing and displaying the Streamlit sidebar in the DocuTalk 
+    application.
     """
 
     def __init__(
@@ -42,7 +43,8 @@ class Sidebar:
     @st.dialog(title="Terms of Use", width="large")
     def display_terms_of_use(self):
         """
-        Displays the Terms of Use dialog to the user and updates their acceptance status.
+        Displays the Terms of Use dialog to the user and updates their acceptance 
+        status.
         """
         
         st.markdown(TEXTS["terms_of_use"])
@@ -79,14 +81,16 @@ class Sidebar:
             user_id=self.auth.user["email"]
         )
 
-        remaining_credits = round((self.auth.user["period_dollar_amount"] - consumed_price) * CREDIT_EXCHANGE_RATE)
+        period_dollar_amount = self.auth.user["period_dollar_amount"]
+        available_credits =  period_dollar_amount * CREDIT_EXCHANGE_RATE
+        remaining_credits = available_credits - consumed_price * CREDIT_EXCHANGE_RATE
 
         html = Template(templates.remaining_credits_html).substitute(
             url_logo=BASE_URL,
             logo=ENCODED_LOGO,
             name=self.auth.user["friendly_name"],
-            remaining_credits=remaining_credits,
-            available_credits=self.auth.user["period_dollar_amount"] * CREDIT_EXCHANGE_RATE
+            remaining_credits=round(remaining_credits),
+            available_credits=available_credits
         )
 
         self.credit_placeholder.html(html)
@@ -111,7 +115,8 @@ class Sidebar:
 
     def display_sidebar(self):
         """
-        Displays the sidebar with user credits, settings, logout options, and additional information.
+        Displays the sidebar with user credits, settings, logout options, and 
+        additional information.
         """
 
         with st.sidebar:

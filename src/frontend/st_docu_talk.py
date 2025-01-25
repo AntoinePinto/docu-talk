@@ -25,7 +25,8 @@ class StreamlitDocuTalk:
 
     def __init__(self) -> None:
         """
-        Initializes the StreamlitDocuTalk instance with authentication, mailing, and sidebar services.
+        Initializes the StreamlitDocuTalk instance with authentication, mailing, 
+        and sidebar services.
         """
         
         self.docu_talk = DocuTalk()
@@ -121,7 +122,10 @@ class StreamlitDocuTalk:
 
     @st_confirmation_dialog(
         title="Are you sure to delete your account?",
-        content="By deleting your account, you will no longer have access to any of your Chat Bots.",
+        content=(
+            "By deleting your account, you will no longer have access "
+            "to any of your Chat Bots."
+        ),
         button_label="Delete my account"
     )
     def delete_user(self) -> None:
@@ -191,7 +195,9 @@ class StreamlitDocuTalk:
             icon=icon
         )
 
-        self.auth.user["chatbots"] = self.docu_talk.get_user_chatbots(user_id=self.auth.user["email"])
+        self.auth.user["chatbots"] = self.docu_talk.get_user_chatbots(
+            user_id=self.auth.user["email"]
+        )
 
         if chatbot_id in self.chatbots:
             del self.chatbots[chatbot_id]
@@ -218,7 +224,9 @@ class StreamlitDocuTalk:
             chatbot_id=chatbot_id
         )
 
-        self.auth.user["chatbots"] = self.docu_talk.get_user_chatbots(user_id=self.auth.user["email"])
+        self.auth.user["chatbots"] = self.docu_talk.get_user_chatbots(
+            user_id=self.auth.user["email"]
+        )
 
         if chatbot_id in self.chatbots:
             del self.chatbots[chatbot_id]

@@ -13,7 +13,8 @@ def recursive_read(
         remove_extension_in_key_name: bool = True
     ) -> Dict[str, Any]:
     """
-    Recursively reads files in a folder with specified extensions and returns their content.
+    Recursively reads files in a folder with specified extensions and returns their 
+    content.
 
     Parameters
     ----------

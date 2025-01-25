@@ -114,8 +114,9 @@ class GoogleCloudStorageManager:
         blob_name = self.get_blob_name(uri)
         blob = self.bucket.blob(blob_name)
 
+        expiration = datetime.now(timezone.utc) + timedelta(minutes=expiration_minutes)
         signed_url = blob.generate_signed_url(
-            expiration=datetime.now(timezone.utc) + timedelta(minutes=expiration_minutes),
+            expiration=expiration,
             method="GET" 
         )
 

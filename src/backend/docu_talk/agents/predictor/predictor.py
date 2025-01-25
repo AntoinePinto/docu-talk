@@ -14,8 +14,14 @@ load_dotenv()
 sys.path.append("src/backend")
 from docu_talk.database.database import Database
 
+metrics = [
+    "create_chatbot_duration", 
+    "ask_chatbot_duration", 
+    "ask_chatbot_token_count"
+]
+
 models = {}
-for metric in ["create_chatbot_duration", "ask_chatbot_duration", "ask_chatbot_token_count"]:
+for metric in metrics:
     path = os.path.join(os.path.dirname(__file__), "models", f"{metric}.pickle")
     models[metric] = joblib.load(path)
 
@@ -45,7 +51,11 @@ class Predictor:
 
     def log_metric(
             self,
-            metric: Literal["create_chatbot_duration", "ask_chatbot_duration", "ask_chatbot_token_count"],
+            metric: Literal[
+                "create_chatbot_duration", 
+                "ask_chatbot_duration", 
+                "ask_chatbot_token_count"
+            ],
             value: Any,
             features: dict,
             metadata: dict = {}
@@ -56,7 +66,7 @@ class Predictor:
         Parameters
         ----------
         metric : Literal
-            The metric to log ('create_chatbot_duration', 'ask_chatbot_duration', 'ask_chatbot_token_count').
+            The metric to log.
         value : Any
             The value of the metric.
         features : dict
@@ -194,7 +204,11 @@ class Predictor:
 
     def train(
             self,
-            metric: Literal["create_chatbot_duration", "ask_chatbot_duration", "ask_chatbot_token_count"]
+            metric: Literal[
+                "create_chatbot_duration", 
+                "ask_chatbot_duration", 
+                "ask_chatbot_token_count"
+            ]
         ) -> None:
         """
         Trains a machine learning model for the specified metric.
@@ -202,7 +216,7 @@ class Predictor:
         Parameters
         ----------
         metric : Literal
-            The metric to train a model for ('create_chatbot_duration', 'ask_chatbot_duration', 'ask_chatbot_token_count').
+            The metric to train a model.
         """
 
         data = self.db.get_data(table=self.metric_tables[metric])
@@ -213,12 +227,21 @@ class Predictor:
         model = RandomForestRegressor(n_estimators=100, random_state=42)
         model.fit(X, Y)
 
-        model_path = os.path.join(os.path.dirname(__file__), "models", f"{metric}.pickle")
+        model_path = os.path.join(
+            os.path.dirname(__file__), 
+            "models", 
+            f"{metric}.pickle"
+        )
+        
         joblib.dump(model, model_path)
 
     def predict(
             self,
-            metric: Literal["create_chatbot_duration", "ask_chatbot_duration", "ask_chatbot_token_count"],
+            metric: Literal[
+                "create_chatbot_duration", 
+                "ask_chatbot_duration", 
+                "ask_chatbot_token_count"
+            ],
             data: dict
         ) -> int | float:
         """
@@ -227,7 +250,8 @@ class Predictor:
         Parameters
         ----------
         metric : Literal
-            The metric to predict ('create_chatbot_duration', 'ask_chatbot_duration', 'ask_chatbot_token_count').
+            The metric to predict ('create_chatbot_duration', 'ask_chatbot_duration',
+            'ask_chatbot_token_count').
         data : dict
             The input data for prediction.
 
@@ -250,5 +274,5 @@ class Predictor:
 if __name__ == "__main__":
 
     predictor = Predictor()
-    for metric in ["create_chatbot_duration", "ask_chatbot_duration", "ask_chatbot_token_count"]:
+    for metric in metrics:
         predictor.train(metric=metric)

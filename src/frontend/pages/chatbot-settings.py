@@ -20,7 +20,9 @@ app.set_page_config(
 )
 
 if "chatbot_id" not in st.query_params:
-    st.query_params["chatbot_id"] = app.chatbot_id # to remove in a future version a Streamlit (see https://github.com/streamlit/streamlit/issues/8112)
+    # Temporary assignment due to Streamlit issue #8112
+    # To be removed in a future version of Streamlit
+    st.query_params["chatbot_id"] = app.chatbot_id
 
 chatbot_id = st.query_params.chatbot_id
 
@@ -40,7 +42,8 @@ chatbot : ChatBot = app.chatbots[chatbot_id]
 
 st.markdown(f"# {chatbot.title} - Settings")
 
-tab_main_settings, tab_documents, tab_access = st.tabs(["Main Settings", "Manage Documents", "Manage Access"])
+tabs = ["Main Settings", "Manage Documents", "Manage Access"]
+tab_main_settings, tab_documents, tab_access = st.tabs(tabs)
 
 with tab_main_settings:
 
@@ -123,7 +126,8 @@ with tab_main_settings:
                 """
                 **Suggested prompts**
 
-                Here are the suggested prompts of the chatbot. You can edit them if needed.
+                Here are the suggested prompts of the chatbot. You can edit them if 
+                needed.
                 """
             )
 
@@ -175,19 +179,35 @@ with tab_documents:
 
         if add_documents:
 
-            documents = [{"filename": d.name, "bytes": d.getvalue()} for d in documents_files] #type: ignore
+            documents = []
+            for document in documents_files: # type: ignore
+                documents.append(
+                    {
+                        "filename": document.name, 
+                        "bytes": document.getvalue()
+                    }
+                )
 
-            if (len(documents_files) + len(chatbot.service.documents)) > MAX_NB_DOC_PER_CHATBOT:
-                st.error(f"The total number of documents should be less than {MAX_NB_DOC_PER_CHATBOT}.")
+            total_nb_documents = len(documents_files) + len(chatbot.service.documents)
+            if total_nb_documents > MAX_NB_DOC_PER_CHATBOT:
+                st.error(
+                    "The total number of documents should be less "
+                    f"than {MAX_NB_DOC_PER_CHATBOT}."
+                )
             else:
             
-                total_pages = sum([document["nb_pages"] for document in chatbot.service.documents])
+                total_pages = sum(
+                    [document["nb_pages"] for document in chatbot.service.documents]
+                )
                 for document in documents:
                     document["nb_pages"] = get_nb_pages_pdf(document["bytes"])
                     total_pages += document["nb_pages"]
                 
                 if total_pages > MAX_NB_PAGES_PER_CHATBOT:
-                    st.error(f"The total number of pages in the documents must be less than {MAX_NB_PAGES_PER_CHATBOT}.")
+                    st.error(
+                        "The total number of pages in the documents must be less "
+                        f"than {MAX_NB_PAGES_PER_CHATBOT}."
+                    )
                 else:
                     app.add_documents(
                         chatbot_id=chatbot_id,
@@ -219,7 +239,10 @@ with tab_documents:
 with tab_access:
 
     if app.auth.user["is_guest"] is True:
-        st.warning("As a guest, you do not have access to the Access Management functionalities.")
+        st.warning(
+            "As a guest, you do not have access to the "
+            "Access Management functionalities."
+        )
     elif chatbot.access == "public":
         st.info("This Chat Bot is public and shared with all users of the application.")
     else:
@@ -237,7 +260,10 @@ with tab_access:
             role = col1.selectbox(
                 label="Role",
                 options=["User", "Admin"],
-                help="As well as being able to chat with the Chat Bot, Admins can manage the Chat Bot's settings."
+                help=(
+                    "As well as being able to chat with the Chat Bot, "
+                    "Admins can manage the Chat Bot's settings."
+                )
             )
 
             st.button(

@@ -34,8 +34,8 @@ PROMPTS = recursive_read(
 
 class ChatBotService:
     """
-    A service class for managing chatbot interactions, including generating titles, icons, 
-    suggested prompts, and handling user queries.
+    A service class for managing chatbot interactions, including generating titles, 
+    icons, suggested prompts, and handling user queries.
     """
 
     def __init__(
@@ -237,7 +237,7 @@ class ChatBotService:
         Parameters
         ----------
         model : str, optional
-            The model to use for generating suggested prompts (default is "gemini-1.5-flash-002").
+            The model to use for generating suggested prompts.
 
         Returns
         -------
@@ -297,13 +297,15 @@ class ChatBotService:
         )
 
         messages = self.get_documents_contents(document_ids=document_ids)
-        messages.extend([{"role": m["role"], "parts": [m["content"]]} for m in self.messages])
+        messages.extend(
+            [{"role": m["role"], "parts": [m["content"]]} for m in self.messages]
+        )
         
         response = self.gemini.get_answer(
             messages=messages,
             stream=True,
             model=model,
-            context="You are an assistant and you role is to answer questions relative to the provided documents. Reply in the same language as the user's message."
+            context=PROMPTS["context_ask"]
         )
 
         return self.return_streamed_response(response)
@@ -319,7 +321,7 @@ class ChatBotService:
         Parameters
         ----------
         model : str, optional
-            The model to use for source identification (default is "gemini-1.5-flash-002").
+            The model to use for source identification.
         document_ids : list or None, optional
             A list of document IDs to include in the context (default is None).
 
@@ -330,7 +332,9 @@ class ChatBotService:
         """
 
         messages = self.get_documents_contents(document_ids=document_ids)
-        messages.extend([{"role": m["role"], "parts": [m["content"]]} for m in self.messages])
+        messages.extend(
+            [{"role": m["role"], "parts": [m["content"]]} for m in self.messages]
+        )
         messages.append({"role": "user", "parts": [PROMPTS["source_identification"]]})
 
         response = self.gemini.get_answer(
@@ -359,7 +363,11 @@ class ChatBotService:
             if extracted_source["filename"] not in filenames:
                 continue
 
-            uri = next(document["uri"] for document in self.documents if document["filename"] == extracted_source["filename"])
+            uri = next(
+                document["uri"] 
+                for document in self.documents 
+                if document["filename"] == extracted_source["filename"]
+            )
             signed_url = self.storage_manager.generate_signed_url(uri)
             extracted_source["url"] = f"{signed_url}#page={extracted_source['page']}"
 

@@ -10,8 +10,12 @@ app.set_page_config(
 
 st.markdown("## Your Private Chat Bots")
 
-private_chatbots = {id: chatbot for id, chatbot in app.auth.user["chatbots"].items() if chatbot["access"] != "public"}
-public_chatbots = {id: chatbot for id, chatbot in app.auth.user["chatbots"].items() if chatbot["access"] == "public"}
+private_chatbots, public_chatbots = {}, {}
+for id, chatbot in app.auth.user["chatbots"].items():
+    if chatbot["access"] == "public":
+        public_chatbots[id] = chatbot
+    elif chatbot["access"] == "private":
+        private_chatbots[id] = chatbot
 
 if len(private_chatbots) == 0:
 
@@ -26,7 +30,11 @@ else:
 
         container = st.container(border=True)
 
-        subcol0, subcol1, subcol2 = container.columns([1, 7, 2], vertical_alignment="center", gap="medium")
+        subcol0, subcol1, subcol2 = container.columns(
+            spec=[1, 7, 2], 
+            vertical_alignment="center", 
+            gap="medium"
+        )
 
         subcol0.image(
             image=chatbot["icon"],
@@ -69,7 +77,11 @@ for id, chatbot in public_chatbots.items():
 
     container = st.container(border=True)
 
-    subcol0, subcol1, subcol2 = container.columns([1, 7, 2], vertical_alignment="center", gap="medium")
+    subcol0, subcol1, subcol2 = container.columns(
+        spec=[1, 7, 2], 
+        vertical_alignment="center", 
+        gap="medium"
+    )
 
     subcol0.image(
         image=chatbot["icon"],

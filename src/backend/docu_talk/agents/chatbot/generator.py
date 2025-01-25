@@ -111,7 +111,8 @@ class Gemini:
             **kwargs
         ):
         """
-        Retrieves a response from the Gemini model, with options for streaming or non-streaming.
+        Retrieves a response from the Gemini model, with options for streaming or 
+        non-streaming.
 
         Parameters
         ----------

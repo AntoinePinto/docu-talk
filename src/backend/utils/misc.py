@@ -5,7 +5,8 @@ def get_param_or_env(
         env_var: str
     ) -> str | None:
     """
-    Retrieves a parameter value if provided, otherwise fetches it from an environment variable.
+    Retrieves a parameter value if provided, otherwise fetches it from an environment 
+    variable.
 
     Parameters
     ----------
@@ -30,4 +31,7 @@ def get_param_or_env(
     elif os.getenv(env_var) is not None:
         return os.getenv(env_var)
     else:
-        raise Exception(f"{env_var} is not set. You should specify it as a parameter or as an environment variable.")
+        raise Exception(
+            f"{env_var} is not set. You should specify it as a parameter or "
+            "as an environment variable."
+        )

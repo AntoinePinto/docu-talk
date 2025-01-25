@@ -22,7 +22,9 @@ app.set_page_config(
 )
 
 if "chatbot_id" not in st.query_params:
-    st.query_params["chatbot_id"] = app.chatbot_id # to remove in a future version a Streamlit (see https://github.com/streamlit/streamlit/issues/8112)
+    # Temporary assignment due to Streamlit issue #8112
+    # To be removed in a future version of Streamlit
+    st.query_params["chatbot_id"] = app.chatbot_id
 
 chatbot_id = st.query_params.chatbot_id
 
@@ -48,7 +50,10 @@ else:
     model = BASIC_MODEL_NAME
 
 new_message = st.chat_message("assistant", avatar=chatbot.icon)
-new_message.markdown(f"Hello {app.auth.user['first_name']}👋 I am the Chat Bot **{chatbot.title}**!")
+new_message.markdown(
+    f"Hello {app.auth.user['first_name']}👋 "
+    f"I am the Chat Bot **{chatbot.title}**!"
+)
 
 col0, col1, _ = new_message.columns([4, 2, 3])
 
@@ -94,8 +99,15 @@ if open_chatbot_settings:
 
 if len(chatbot.suggested_prompts) > 2:
     random_prompts = random.sample(chatbot.suggested_prompts, 3)
-    suggested_prompt_list = "\n".join([f"*  *{prompt['prompt']}*" for prompt in random_prompts])
-    markdown = TEXTS["suggested_prompts"].format(suggested_prompt_list=suggested_prompt_list)
+    
+    suggested_prompt_list = "\n".join(
+        [f"*  *{prompt['prompt']}*" for prompt in random_prompts]
+    )
+    
+    markdown = TEXTS["suggested_prompts"].format(
+        suggested_prompt_list=suggested_prompt_list
+    )
+    
     new_message.markdown(markdown)
 
 for msg in chatbot.service.messages:

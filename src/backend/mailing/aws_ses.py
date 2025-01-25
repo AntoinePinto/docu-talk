@@ -19,11 +19,11 @@ class AWSMailSES:
         Parameters
         ----------
         server_public_key : str or None, optional
-            The AWS public key for authentication (default is fetched from the environment).
+            The AWS public key for authentication.
         server_secret_key : str or None, optional
-            The AWS secret key for authentication (default is fetched from the environment).
+            The AWS secret key for authentication.
         region : str or None, optional
-            The AWS region for the SES service (default is fetched from the environment).
+            The AWS region for the SES service.
         """
         
         server_public_key = get_param_or_env(server_public_key, "AWS_SERVER_PUBLIC_KEY")

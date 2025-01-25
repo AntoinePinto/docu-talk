@@ -44,17 +44,33 @@ if create_chatbot:
         
         nb_documents = len(documents_files)
         if nb_documents > MAX_NB_DOC_PER_CHATBOT:
-            st.error(f"The total number of documents should be less than {MAX_NB_DOC_PER_CHATBOT}.")
+            st.error(
+                "The total number of documents should be less than "
+                f"{MAX_NB_DOC_PER_CHATBOT}."
+            )
             st.stop()
 
-        documents = [{"filename": d.name, "bytes": d.getvalue()} for d in documents_files] #type: ignore
         total_pages = 0
-        for document in documents:
-            document["nb_pages"] = get_nb_pages_pdf(document["bytes"])
+        documents = []
+        for document in documents_files: #type: ignore
+
+            document_bytes = document.getvalue()
+
+            documents.append(
+                {
+                    "filename": document.name, 
+                    "bytes": document_bytes,
+                    "nb_pages": get_nb_pages_pdf(document_bytes)
+                }
+            )
+
             total_pages += document["nb_pages"]
         
         if total_pages > MAX_NB_PAGES_PER_CHATBOT:
-            st.error(f"The total number of pages in the documents must be less than {MAX_NB_PAGES_PER_CHATBOT}.")
+            st.error(
+                "The total number of pages in the documents must be less than "
+                f"{MAX_NB_PAGES_PER_CHATBOT}."
+            )
             st.stop()
 
         estimated_duration = app.docu_talk.predictor.predict(
@@ -68,7 +84,16 @@ if create_chatbot:
         )
 
     start_time = datetime.now()
-    with st.status(f"Chatbot Deployment | Estimated duration: {estimated_duration:.0f} seconds", expanded=True):
+
+    status_placeholder = st.status(
+        label=(
+            "Chatbot Deployment | Estimated duration: "
+            f"{estimated_duration:.0f} seconds"
+        ), 
+        expanded=True
+    )
+
+    with status_placeholder:
 
         chatbot_id = str(uuid4())
 
@@ -85,11 +110,21 @@ if create_chatbot:
             title, description = chatbot.generate_title_description(
                 model=model
             )
-            new_message.markdown(f"Your chatbot can be named like this: **{title}**")
-            new_message.markdown(f"And I'll give him this description: **{description}**")
+            new_message.markdown(
+                f"Your chatbot can be named like this: **{title}**"
+            )
+            new_message.markdown(
+                f"And I'll give him this description: **{description}**"
+            )
         except BadOutputFormat:
+
             title, description = "<TITLE>", "<DESCRIPTION>"
-            new_message.markdown(f"Hmm... I failed to define title & description of your chatbot. I'm going to set the title to '**{title}**' and the description to '**{description}**' for now.")
+            message = TEXTS["failed_title_description"].format(
+                title=title,
+                description=description
+            )
+            
+            new_message.markdown(message)
 
         app.store_usage(
             model_name=chatbot.last_usages["model"],
@@ -112,14 +147,26 @@ if create_chatbot:
         
         new_message = st.chat_message("assistant", avatar=LOGO_PATH)
         try:
+            
             suggested_prompts = chatbot.get_suggested_prompts(
                 model=model
             )
-            md_suggested_prompts = "\n".join([f"* *{prompt}*" for prompt in suggested_prompts])
-            new_message.markdown(f"Finally, I suggest the following examples of prompts:\n\n{md_suggested_prompts}")
+            
+            md_suggested_prompts = "\n".join(
+                [f"* *{prompt}*" for prompt in suggested_prompts]
+            )
+            
+            new_message.markdown(
+                "Finally, I suggest the following examples of prompts:\n\n"
+                f"{md_suggested_prompts}"
+            )
+            
         except BadOutputFormat:
             suggested_prompts = []
-            new_message.markdown("Hmm... I failed to define example prompts for your chatbot. I'll leave this blank for now.")
+            new_message.markdown(
+                "Hmm... I failed to define example prompts for your chatbot. "
+                "I'll leave this blank for now."
+            )
 
         app.store_usage(
             model_name=chatbot.last_usages["model"],
@@ -147,7 +194,9 @@ if create_chatbot:
             chatbot_id=chatbot_id
         )
 
-        app.auth.user["chatbots"] = app.docu_talk.get_user_chatbots(user_id=app.auth.user["email"])
+        app.auth.user["chatbots"] = app.docu_talk.get_user_chatbots(
+            user_id=app.auth.user["email"]
+        )
         app.chatbot_id = chatbot_id
 
         new_message = st.chat_message("assistant", avatar=LOGO_PATH)

@@ -26,7 +26,11 @@ def get_icon_bytes(
         The binary content of the generated PNG icon.
     """
 
-    font_path = os.path.join(os.path.dirname(__file__), "src", "MaterialIcons-Regular.ttf")
+    font_path = os.path.join(
+        os.path.dirname(__file__), 
+        "src", 
+        "MaterialIcons-Regular.ttf"
+    )
 
     # Load the font
     font = ImageFont.truetype(font_path, size)

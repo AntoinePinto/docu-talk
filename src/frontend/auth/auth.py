@@ -17,7 +17,8 @@ from utils.auth import is_valid_email
 
 class Auth:
     """
-    A class to manage user authentication, including sign-up, sign-in, guest access, and logout.
+    A class to manage user authentication, including sign-up, sign-in, guest access, 
+    and logout.
     """
 
     def __init__(
@@ -93,7 +94,8 @@ class Auth:
         Raises
         ------
         streamlit.error
-            If the email, first name, or last name format is invalid or the email already exists.
+            If the email, first name, or last name format is invalid or the email 
+            already exists.
         """
 
         if not is_valid_email(email):
@@ -125,7 +127,11 @@ class Auth:
                     password=password
                 )
 
-                st.success("Successful registration. You have received an e-mail containing your login details (check your spam).")
+                st.success(
+                    "Successful registration. You have received an e-mail "
+                    "containing your login details (check your spam)."
+                )
+                
                 st.balloons()
 
     def sign_in(

@@ -6,7 +6,8 @@ def st_progress(
         success_icon="✅"
     ):
     """
-    A decorator to display a progress spinner and toast messages during function execution.
+    A decorator to display a progress spinner and toast messages during function 
+    execution.
 
     Parameters
     ----------

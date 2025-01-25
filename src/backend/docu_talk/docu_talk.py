@@ -18,12 +18,14 @@ from utils.auth import generate_password, hash_password, verify_password
 
 class DocuTalk:
     """
-    A service class for managing chatbots, users, documents, and usage within the DocuTalk application.
+    A service class for managing chatbots, users, documents, and usage within the 
+    DocuTalk application.
     """
 
     def __init__(self) -> None:
         """
-        Initializes the DocuTalk instance with storage, database, and prediction services.
+        Initializes the DocuTalk instance with storage, database, and prediction 
+        services.
         """
         
         self.storage_manager = GoogleCloudStorageManager(
@@ -205,7 +207,9 @@ class DocuTalk:
         for chatbot in chatbots:
 
             if chatbot["access"] != "public":
-                chatbot["user_role"] = next(d["role"] for d in accesses if d["chatbot_id"] == chatbot["id"])
+                chatbot["user_role"] = next(
+                    d["role"] for d in accesses if d["chatbot_id"] == chatbot["id"]
+                )
             else:
                 chatbot["user_role"] = "User"
             
@@ -327,7 +331,7 @@ class DocuTalk:
             filter={"chatbot_id": chatbot_id}
         )
 
-        uri = next(document["uri"] for document in documents if document["filename"] == filename)
+        uri = next(d["uri"] for d in documents if d["filename"] == filename)
 
         self.storage_manager.delete_from_gcs(
             uri=uri
@@ -390,10 +394,12 @@ class DocuTalk:
 
             document["id"] = str(uuid4())
 
-            document["uri"], document["public_path"] = self.storage_manager.save_from_file(
+            uri, public_path = self.storage_manager.save_from_file(
                 file=document["bytes"],
                 gcs_path=f"docu-talk/chatbots/{chatbot_id}/{document['id']}.pdf"
             )
+
+            document["uri"], document["public_path"] = uri, public_path 
 
         chatbot_service = ChatBotService(
             documents=documents,
@@ -673,7 +679,9 @@ class DocuTalk:
         """
 
         today = datetime.now()
-        start_of_week = (today - timedelta(days=today.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+        start_of_week = (today - timedelta(days=today.weekday())).replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
         end_of_week = start_of_week + timedelta(days=7)
 
         usages_data = self.db.get_data(
@@ -715,7 +723,9 @@ class DocuTalk:
             The cost of the usage.
         """
 
-        price_per_unit = next(model["price_per_unit"] for model in self.models if model["name"] == model_name)
+        price_per_unit = next(
+            m["price_per_unit"] for m in self.models if m["name"] == model_name
+        )
         price = qty * price_per_unit
 
         self.db.insert_data(
