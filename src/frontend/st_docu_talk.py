@@ -25,7 +25,7 @@ class StreamlitDocuTalk:
 
     def __init__(self) -> None:
         """
-        Initializes the StreamlitDocuTalk instance with authentication, mailing, 
+        Initializes the StreamlitDocuTalk instance with authentication, mailing,
         and sidebar services.
         """
         

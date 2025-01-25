@@ -4,7 +4,7 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 
 def get_icon_bytes(
-        icon_id: str, 
+        icon_id: str,
         size: int = 256,
         color: str = "black"
     ) -> bytes:
@@ -27,8 +27,8 @@ def get_icon_bytes(
     """
 
     font_path = os.path.join(
-        os.path.dirname(__file__), 
-        "src", 
+        os.path.dirname(__file__),
+        "src",
         "MaterialIcons-Regular.ttf"
     )
 

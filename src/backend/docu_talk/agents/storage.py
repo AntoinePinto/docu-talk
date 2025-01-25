@@ -7,7 +7,7 @@ from google.cloud import storage
 
 class GoogleCloudStorageManager:
     """
-    A class to manage Google Cloud Storage operations, including file uploads, 
+    A class to manage Google Cloud Storage operations, including file uploads,
     downloads, and deletions.
     """
 
@@ -31,8 +31,8 @@ class GoogleCloudStorageManager:
         self.bucket = storage.Client(project_id).bucket(bucket_name)
     
     def save_from_file(
-            self, 
-            file: str, 
+            self,
+            file: str,
             gcs_path: str
         ) -> Tuple[str, str]:
         """
@@ -60,7 +60,7 @@ class GoogleCloudStorageManager:
         return uri, public_path
     
     def get_blob_name(
-            self, 
+            self,
             uri: str
         ) -> str:
         """
@@ -91,7 +91,7 @@ class GoogleCloudStorageManager:
         return blob_name
 
     def generate_signed_url(
-            self, 
+            self,
             uri: str,
             expiration_minutes: int = 15
         ) -> str:
@@ -117,13 +117,13 @@ class GoogleCloudStorageManager:
         expiration = datetime.now(timezone.utc) + timedelta(minutes=expiration_minutes)
         signed_url = blob.generate_signed_url(
             expiration=expiration,
-            method="GET" 
+            method="GET"
         )
 
         return signed_url
 
     def delete_from_gcs(
-            self, 
+            self,
             uri: str
         ) -> None:
         """
@@ -140,7 +140,7 @@ class GoogleCloudStorageManager:
         blob.delete()
 
     def delete_directory_from_gcs(
-            self, 
+            self,
             directory_path: str
         ) -> None:
         """

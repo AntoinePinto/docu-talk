@@ -25,7 +25,7 @@ if app.auth.logged_in is False:
 else:
     pg = st.navigation(
         [
-            st.Page("src/frontend/pages/home.py", title="Home", default=True), 
+            st.Page("src/frontend/pages/home.py", title="Home", default=True),
             st.Page("src/frontend/pages/chatbot.py", title="Docu Talk"),
             st.Page("src/frontend/pages/create-chatbot.py", title="Create Chat Bot"),
             st.Page("src/frontend/pages/settings.py", title="Settings"),

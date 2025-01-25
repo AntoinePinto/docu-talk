@@ -11,8 +11,8 @@ from docu_talk.exceptions import BadOutputFormat
 from utils.file_io import recursive_read
 
 from utils.parsing import (
-    extract_list_of_dicts, 
-    extract_list, 
+    extract_list_of_dicts,
+    extract_list,
     extract_dict
 )
 
@@ -34,7 +34,7 @@ PROMPTS = recursive_read(
 
 class ChatBotService:
     """
-    A service class for managing chatbot interactions, including generating titles, 
+    A service class for managing chatbot interactions, including generating titles,
     icons, suggested prompts, and handling user queries.
     """
 
@@ -107,7 +107,7 @@ class ChatBotService:
         self.messages = []
 
     def return_streamed_response(
-            self, 
+            self,
             stream: Generator
         ) -> Generator:
         """
@@ -364,8 +364,8 @@ class ChatBotService:
                 continue
 
             uri = next(
-                document["uri"] 
-                for document in self.documents 
+                document["uri"]
+                for document in self.documents
                 if document["filename"] == extracted_source["filename"]
             )
             signed_url = self.storage_manager.generate_signed_url(uri)

@@ -6,7 +6,7 @@ def st_progress(
         success_icon="✅"
     ):
     """
-    A decorator to display a progress spinner and toast messages during function 
+    A decorator to display a progress spinner and toast messages during function
     execution.
 
     Parameters
@@ -73,7 +73,7 @@ def st_confirmation_dialog(
                 key="confirmation"
             )
 
-            if confirmation:        
+            if confirmation:
                 func(*args, **kwargs)
                 st.rerun()
 

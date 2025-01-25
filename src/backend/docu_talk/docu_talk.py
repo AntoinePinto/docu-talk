@@ -18,13 +18,13 @@ from utils.auth import generate_password, hash_password, verify_password
 
 class DocuTalk:
     """
-    A service class for managing chatbots, users, documents, and usage within the 
+    A service class for managing chatbots, users, documents, and usage within the
     DocuTalk application.
     """
 
     def __init__(self) -> None:
         """
-        Initializes the DocuTalk instance with storage, database, and prediction 
+        Initializes the DocuTalk instance with storage, database, and prediction
         services.
         """
         
@@ -301,7 +301,7 @@ class DocuTalk:
         self.db.insert_data(
             table="Documents",
             data={
-                "chatbot_id": chatbot_id, 
+                "chatbot_id": chatbot_id,
                 "created_by": created_by,
                 "filename": filename,
                 "public_path": public_path,
@@ -399,7 +399,7 @@ class DocuTalk:
                 gcs_path=f"docu-talk/chatbots/{chatbot_id}/{document['id']}.pdf"
             )
 
-            document["uri"], document["public_path"] = uri, public_path 
+            document["uri"], document["public_path"] = uri, public_path
 
         chatbot_service = ChatBotService(
             documents=documents,
@@ -469,7 +469,7 @@ class DocuTalk:
             self.db.insert_data(
                 table="Documents",
                 data={
-                    "chatbot_id": chatbot_id, 
+                    "chatbot_id": chatbot_id,
                     "created_by": created_by,
                     "filename": document['filename'],
                     "public_path": document["public_path"],
@@ -580,7 +580,7 @@ class DocuTalk:
             table="Access",
             data={
                 "chatbot_id": chatbot_id,
-                "user_id": user_id, 
+                "user_id": user_id,
                 "role": role
             }
         )

@@ -10,7 +10,7 @@ from utils.decorators import retry_with_exponential_backoff
 
 class Gemini:
     """
-    A class to interface with the Gemini generative model for content generation and 
+    A class to interface with the Gemini generative model for content generation and
     handling safety settings.
     """
 
@@ -34,8 +34,8 @@ class Gemini:
     ]
 
     def __init__(
-            self, 
-            project_id: str | None = None, 
+            self,
+            project_id: str | None = None,
             location: str | None = None
         ) -> None:
         """
@@ -53,12 +53,12 @@ class Gemini:
         location = get_param_or_env(location, "GEMINI_LOCATION")
 
         vertexai.init(
-            project=project_id, 
+            project=project_id,
             location=location
         )
     
     def get_contents(
-            self, 
+            self,
             messages: list[str]
         ) -> list[dict]:
         """
@@ -111,7 +111,7 @@ class Gemini:
             **kwargs
         ):
         """
-        Retrieves a response from the Gemini model, with options for streaming or 
+        Retrieves a response from the Gemini model, with options for streaming or
         non-streaming.
 
         Parameters

@@ -1,6 +1,6 @@
 import streamlit as st
 
-from config import (    
+from config import (
     DISPLAY_GUEST_MODE,
     TEXTS
 )

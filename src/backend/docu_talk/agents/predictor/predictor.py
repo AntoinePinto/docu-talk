@@ -15,8 +15,8 @@ sys.path.append("src/backend")
 from docu_talk.database.database import Database
 
 metrics = [
-    "create_chatbot_duration", 
-    "ask_chatbot_duration", 
+    "create_chatbot_duration",
+    "ask_chatbot_duration",
     "ask_chatbot_token_count"
 ]
 
@@ -27,13 +27,13 @@ for metric in metrics:
 
 class Predictor:
     """
-    A class to manage metrics logging, preprocessing, training, and predictions 
+    A class to manage metrics logging, preprocessing, training, and predictions
     using machine learning models.
     """
 
     metric_tables = {
-        "create_chatbot_duration": "CreateChatbotDurations", 
-        "ask_chatbot_duration": "AskChatbotDurations", 
+        "create_chatbot_duration": "CreateChatbotDurations",
+        "ask_chatbot_duration": "AskChatbotDurations",
         "ask_chatbot_token_count": "AskChatbotTokenCounts"
     }
 
@@ -52,8 +52,8 @@ class Predictor:
     def log_metric(
             self,
             metric: Literal[
-                "create_chatbot_duration", 
-                "ask_chatbot_duration", 
+                "create_chatbot_duration",
+                "ask_chatbot_duration",
                 "ask_chatbot_token_count"
             ],
             value: Any,
@@ -174,7 +174,7 @@ class Predictor:
         )
 
     def preprocess(
-            self, 
+            self,
             data: list
         ) -> pd.DataFrame:
         """
@@ -205,8 +205,8 @@ class Predictor:
     def train(
             self,
             metric: Literal[
-                "create_chatbot_duration", 
-                "ask_chatbot_duration", 
+                "create_chatbot_duration",
+                "ask_chatbot_duration",
                 "ask_chatbot_token_count"
             ]
         ) -> None:
@@ -228,8 +228,8 @@ class Predictor:
         model.fit(X, Y)
 
         model_path = os.path.join(
-            os.path.dirname(__file__), 
-            "models", 
+            os.path.dirname(__file__),
+            "models",
             f"{metric}.pickle"
         )
         
@@ -238,8 +238,8 @@ class Predictor:
     def predict(
             self,
             metric: Literal[
-                "create_chatbot_duration", 
-                "ask_chatbot_duration", 
+                "create_chatbot_duration",
+                "ask_chatbot_duration",
                 "ask_chatbot_token_count"
             ],
             data: dict

@@ -9,7 +9,7 @@ def retry_with_exponential_backoff(
         errors: tuple = (AttributeError,),
     ):
     """
-    A decorator to retry a function with exponential backoff in case of specified 
+    A decorator to retry a function with exponential backoff in case of specified
     errors.
 
     Parameters

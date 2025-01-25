@@ -20,7 +20,7 @@ for id, chatbot in app.auth.user["chatbots"].items():
 if len(private_chatbots) == 0:
 
     st.warning(
-        body="*You have no Private Chat Bot for now*", 
+        body="*You have no Private Chat Bot for now*",
         icon=":material/block:"
     )
 
@@ -31,8 +31,8 @@ else:
         container = st.container(border=True)
 
         subcol0, subcol1, subcol2 = container.columns(
-            spec=[1, 7, 2], 
-            vertical_alignment="center", 
+            spec=[1, 7, 2],
+            vertical_alignment="center",
             gap="medium"
         )
 
@@ -78,8 +78,8 @@ for id, chatbot in public_chatbots.items():
     container = st.container(border=True)
 
     subcol0, subcol1, subcol2 = container.columns(
-        spec=[1, 7, 2], 
-        vertical_alignment="center", 
+        spec=[1, 7, 2],
+        vertical_alignment="center",
         gap="medium"
     )
 

@@ -55,13 +55,13 @@ class TokenManager:
         """
 
         data = {
-            "user_id": user_id, 
+            "user_id": user_id,
             "exp": datetime.now(timezone.utc) + timedelta(hours=self.token_expiration)
         }
 
         token = jwt.encode(
-            payload=data, 
-            key=self.secret_key, 
+            payload=data,
+            key=self.secret_key,
             algorithm="HS256"
         )
         
@@ -88,8 +88,8 @@ class TokenManager:
         try:
             
             decoded_token = jwt.decode(
-                jwt=token, 
-                key=self.secret_key, 
+                jwt=token,
+                key=self.secret_key,
                 algorithms=["HS256"]
             )
 

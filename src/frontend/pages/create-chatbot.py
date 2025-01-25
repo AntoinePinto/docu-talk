@@ -4,8 +4,8 @@ from uuid import uuid4
 import streamlit as st
 
 from config import (
-    LOGO_PATH, 
-    TEXTS, 
+    LOGO_PATH,
+    TEXTS,
     MAX_NB_DOC_PER_CHATBOT,
     MAX_NB_PAGES_PER_CHATBOT,
     PREMIUM_MODEL_NAME
@@ -58,7 +58,7 @@ if create_chatbot:
 
             documents.append(
                 {
-                    "filename": document.name, 
+                    "filename": document.name,
                     "bytes": document_bytes,
                     "nb_pages": get_nb_pages_pdf(document_bytes)
                 }
@@ -89,7 +89,7 @@ if create_chatbot:
         label=(
             "Chatbot Deployment | Estimated duration: "
             f"{estimated_duration:.0f} seconds"
-        ), 
+        ),
         expanded=True
     )
 

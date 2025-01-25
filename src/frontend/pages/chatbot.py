@@ -58,7 +58,7 @@ new_message.markdown(
 col0, col1, _ = new_message.columns([4, 2, 3])
 
 popover = col0.popover(
-    label=f"**{len(chatbot.service.documents)}** linked documents", 
+    label=f"**{len(chatbot.service.documents)}** linked documents",
     icon=":material/picture_as_pdf:",
     use_container_width=True
 )
@@ -87,7 +87,7 @@ with popover:
             total_pages += document["nb_pages"]
 
 open_chatbot_settings = col1.button(
-    label="Settings", 
+    label="Settings",
     icon=":material/settings:",
     disabled=app.auth.user["chatbots"][chatbot_id]["user_role"] != "Admin",
     use_container_width=True,
@@ -140,7 +140,7 @@ if message := st.chat_input("Your message"):
             start_time = datetime.now()
             
             answer = chatbot.service.ask(
-                message=message, 
+                message=message,
                 model=model,
                 document_ids=selected_document_ids
             )

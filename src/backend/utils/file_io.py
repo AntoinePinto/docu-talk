@@ -8,12 +8,12 @@ import fitz
 from easyenvi import file
 
 def recursive_read(
-        folder: str, 
+        folder: str,
         extensions: tuple[str] = (".sql",),
         remove_extension_in_key_name: bool = True
     ) -> Dict[str, Any]:
     """
-    Recursively reads files in a folder with specified extensions and returns their 
+    Recursively reads files in a folder with specified extensions and returns their
     content.
 
     Parameters
@@ -28,7 +28,7 @@ def recursive_read(
     Returns
     -------
     dict
-        A dictionary where keys are file names (or folder names for nested structures) 
+        A dictionary where keys are file names (or folder names for nested structures)
         and values are file contents or nested dictionaries.
     """
     
@@ -71,7 +71,7 @@ def get_encoded_image(path):
         The base64-encoded string representation of the image.
     """
 
-    with open(path, "rb") as f:            
+    with open(path, "rb") as f:
         encoded_image = base64.b64encode(f.read()).decode()
 
     return encoded_image

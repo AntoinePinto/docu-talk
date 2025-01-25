@@ -126,7 +126,7 @@ with tab_main_settings:
                 """
                 **Suggested prompts**
 
-                Here are the suggested prompts of the chatbot. You can edit them if 
+                Here are the suggested prompts of the chatbot. You can edit them if
                 needed.
                 """
             )
@@ -183,7 +183,7 @@ with tab_documents:
             for document in documents_files: # type: ignore
                 documents.append(
                     {
-                        "filename": document.name, 
+                        "filename": document.name,
                         "bytes": document.getvalue()
                     }
                 )

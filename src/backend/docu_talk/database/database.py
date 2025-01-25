@@ -35,7 +35,7 @@ class Database:
     ]
 
     def __init__(
-            self, 
+            self,
             uri: str,
             database_name: str
         ) -> None:
@@ -76,7 +76,7 @@ class Database:
         return self.database.list_collection_names()
 
     def clear_database(
-            self, 
+            self,
             collections: Union[list, None] = None
         ) -> None:
         """
@@ -96,7 +96,7 @@ class Database:
             
     def insert_data(
             self,
-            table: str, 
+            table: str,
             data: dict
         ) -> str:
         """
@@ -130,8 +130,8 @@ class Database:
         return data["id"]
 
     def get_data(
-            self, 
-            table: str, 
+            self,
+            table: str,
             filter: dict = {},
             sort: dict | None = None,
             limit: int | None = None
@@ -193,8 +193,8 @@ class Database:
         """
         
         result = self.database[table].update_one(
-            filter=filter, 
-            update={'$set': updates}, 
+            filter=filter,
+            update={'$set': updates},
             upsert=True
         )
 

@@ -120,9 +120,9 @@ def extract_dict(text: str):
             raise UnfoundPattern("Unfound Pattern")
     except UnfoundPattern:
         pattern = extract_pattern(
-            text=text, 
+            text=text,
             patterns=[r"\{(?:[^{}]|(?R))*\}", r"\{\n([\s\S]*?)\n\}", r"\{([\s\S]*?)\}"]
-        ) 
+        )
         d = parse_str(pattern)
         
     d = correct_dict(d)

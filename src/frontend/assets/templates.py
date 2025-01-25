@@ -17,7 +17,7 @@ with open(path, "r", encoding="utf-8") as f:
     html = f.read()
 
 path = os.path.join(active_dir, "about", "photo.jpg")
-with open(path, "rb") as f:            
+with open(path, "rb") as f:
     encoded_string = base64.b64encode(f.read()).decode()
 
 about_html = Template(html).substitute(image=encoded_string)

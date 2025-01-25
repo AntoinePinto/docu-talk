@@ -24,8 +24,8 @@ def is_valid_email(email: str):
 
 def generate_password(length: int = 12):
     """
-    Generates a random password with a specified length, ensuring it includes at least 
-    one character from each of the following categories: uppercase letters, lowercase 
+    Generates a random password with a specified length, ensuring it includes at least
+    one character from each of the following categories: uppercase letters, lowercase
     letters, digits, and special characters.
 
     Parameters
@@ -41,15 +41,15 @@ def generate_password(length: int = 12):
     
     list_character_types = [
         "!@#$%&*?",
-        string.ascii_uppercase, 
-        string.ascii_lowercase, 
+        string.ascii_uppercase,
+        string.ascii_lowercase,
         string.digits
     ]
     
     character_pool, password = "", []
     for character_types in list_character_types:
         password.append(random.choice(character_types))
-        character_pool += character_types      
+        character_pool += character_types
     
     while len(password) < length:
         password.append(random.choice(character_pool))
@@ -76,7 +76,7 @@ def hash_password(password: str):
     return hashpw(password.encode('utf-8'), gensalt())
 
 def verify_password(
-        password: str, 
+        password: str,
         hashed: str
     ):
     """

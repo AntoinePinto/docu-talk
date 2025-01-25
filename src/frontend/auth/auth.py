@@ -17,7 +17,7 @@ from utils.auth import is_valid_email
 
 class Auth:
     """
-    A class to manage user authentication, including sign-up, sign-in, guest access, 
+    A class to manage user authentication, including sign-up, sign-in, guest access,
     and logout.
     """
 
@@ -94,7 +94,7 @@ class Auth:
         Raises
         ------
         streamlit.error
-            If the email, first name, or last name format is invalid or the email 
+            If the email, first name, or last name format is invalid or the email
             already exists.
         """
 

@@ -1,11 +1,11 @@
 import os
 
 def get_param_or_env(
-        param: str | None, 
+        param: str | None,
         env_var: str
     ) -> str | None:
     """
-    Retrieves a parameter value if provided, otherwise fetches it from an environment 
+    Retrieves a parameter value if provided, otherwise fetches it from an environment
     variable.
 
     Parameters

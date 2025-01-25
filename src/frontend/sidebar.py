@@ -17,7 +17,7 @@ from config import (
 
 class Sidebar:
     """
-    A class for managing and displaying the Streamlit sidebar in the DocuTalk 
+    A class for managing and displaying the Streamlit sidebar in the DocuTalk
     application.
     """
 
@@ -43,7 +43,7 @@ class Sidebar:
     @st.dialog(title="Terms of Use", width="large")
     def display_terms_of_use(self):
         """
-        Displays the Terms of Use dialog to the user and updates their acceptance 
+        Displays the Terms of Use dialog to the user and updates their acceptance
         status.
         """
         
@@ -115,7 +115,7 @@ class Sidebar:
 
     def display_sidebar(self):
         """
-        Displays the sidebar with user credits, settings, logout options, and 
+        Displays the sidebar with user credits, settings, logout options, and
         additional information.
         """
 
