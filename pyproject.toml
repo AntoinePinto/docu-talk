@@ -1,3 +1,2 @@
 [tool.ruff]
-lint.ignore = ["E402"]
 lint.select = ["E", "F", "W", "C", "N", "B", "S", "I", "Q"]

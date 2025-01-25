@@ -1,11 +1,5 @@
-import sys
-
 import streamlit as st
-from dotenv import load_dotenv
 
-load_dotenv()
-
-sys.path.extend(["src/frontend", "src/backend"])
 from st_docu_talk import StreamlitDocuTalk
 
 if "app" not in st.session_state:

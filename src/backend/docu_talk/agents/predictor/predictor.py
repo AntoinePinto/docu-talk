@@ -1,5 +1,4 @@
 import os
-import sys
 from typing import Any, Literal
 
 import joblib
@@ -7,10 +6,9 @@ import pandas as pd
 from dotenv import load_dotenv
 from sklearn.ensemble import RandomForestRegressor
 
-load_dotenv()
-
-sys.path.append("src/backend")
 from docu_talk.database.database import Database
+
+load_dotenv()
 
 metrics = [
     "create_chatbot_duration",

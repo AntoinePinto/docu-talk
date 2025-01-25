@@ -1,7 +1,11 @@
 import json
 import os
 
+from dotenv import load_dotenv
+
 from utils.file_io import get_encoded_image, recursive_read
+
+load_dotenv()
 
 LOGO_PATH = os.path.join(os.path.dirname(__file__), "assets", "logo_docu_talk.png")
 ENCODED_LOGO = get_encoded_image(path=LOGO_PATH)
