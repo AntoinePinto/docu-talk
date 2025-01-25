@@ -464,7 +464,7 @@ class DocuTalk:
                 data={
                     "chatbot_id": chatbot_id,
                     "created_by": created_by,
-                    "filename": document['filename'],
+                    "filename": document["filename"],
                     "public_path": document["public_path"],
                     "uri": document["uri"],
                     "nb_pages": document["nb_pages"]

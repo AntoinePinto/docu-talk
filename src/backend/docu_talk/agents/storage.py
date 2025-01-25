@@ -83,10 +83,10 @@ class GoogleCloudStorageManager:
         """
 
         parsed_uri = urlparse(uri)
-        if parsed_uri.scheme != 'gs':
+        if parsed_uri.scheme != "gs":
             raise ValueError("Invalid URI scheme. Expected 'gs://'.")
 
-        blob_name = parsed_uri.path.lstrip('/')
+        blob_name = parsed_uri.path.lstrip("/")
 
         return blob_name
 
@@ -152,8 +152,8 @@ class GoogleCloudStorageManager:
             The directory path in the bucket. Should end with a '/'.
         """
 
-        if not directory_path.endswith('/'):
-            directory_path += '/'
+        if not directory_path.endswith("/"):
+            directory_path += "/"
 
         blobs = self.bucket.list_blobs(prefix=directory_path)
         for blob in blobs:

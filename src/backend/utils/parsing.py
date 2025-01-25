@@ -151,7 +151,7 @@ def extract_list(text):
     """
 
     try:
-        pattern = extract_pattern(text, [r'\[\[.*?\]\]', r'\[.*?\]'], regex.DOTALL)
+        pattern = extract_pattern(text, [r"\[\[.*?\]\]", r"\[.*?\]"], regex.DOTALL)
         return parse_str(pattern)
     except UnfoundPatternError:
         return []
@@ -196,26 +196,26 @@ def extract_list_of_dicts(text):
 
     return dict_list
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     texts_dict = [
         (
-            "Some text before the dictionary {\"key1\": \"value1\", \"key2\": "
-            "\"value2\"} and some text after."
+            'Some text before the dictionary {"key1": "value1", "key2": '
+            '"value2"} and some text after.'
         ),
-        "Here is a dict: {\"is_active\": \"True\", \"is_deleted\": \"False\"}",
+        'Here is a dict: {"is_active": "True", "is_deleted": "False"}',
         "Start: {'user': 'admin', 'password': '1234'} End.",
         (
-            "Data contains: {\"user\": {\"name\": \"Alice\", \"age\": 30}, "
-            "\"active\": \"True\"}"
+            'Data contains: {"user": {"name": "Alice", "age": 30}, '
+            '"active": "True"}'
         ),
-        "Here is the data:\n{\n\"key1\": \"value1\",\n\"key2\": \"value2\"\n}",
+        'Here is the data:\n{\n"key1": "value1",\n"key2": "value2"\n}',
         (
-            "Info: {\"name\": \"John Doe\", \"email\": \"john.doe@example.com\", "
-            "\"active\": \"True\"}"
+            'Info: {"name": "John Doe", "email": "john.doe@example.com", '
+            '"active": "True"}'
         ),
-        "Numbers and types: {\"age\": 25, \"score\": 99.5, \"active\": \"False\"}",
-        "First dict: {\"a\": 1} and second dict: {\"b\": 2}"
+        'Numbers and types: {"age": 25, "score": 99.5, "active": "False"}',
+        'First dict: {"a": 1} and second dict: {"b": 2}'
     ]
 
     for text in texts_dict:
@@ -225,11 +225,11 @@ if __name__ == '__main__':
     texts_list = [
         "Here is a list: [1, 2, 3, 4, 5] with some additional text.",
         "Numbers in a list: [10, 20, 30, 40].",
-        "A mixed list: [\"apple\", 42, True, 3.14].",
+        'A mixed list: ["apple", 42, True, 3.14].',
         "Nested list: [[1, 2], [3, 4], [5, 6]].",
         "This text has no list to extract.",
         "Empty list: [].",
-        "Some data: [\"item1\", \"item2\", \"item3\"] and more info.",
+        'Some data: ["item1", "item2", "item3"] and more info.',
         "list: [1, 2, 'three', 4]."
     ]
 
@@ -238,17 +238,17 @@ if __name__ == '__main__':
         print(extracted_list)
 
     texts_list_of_dicts = [
-        "Here is a list of dicts: [{\"key1\": \"value1\"}, {\"key2\": \"value2\"}].",
+        'Here is a list of dicts: [{"key1": "value1"}, {"key2": "value2"}].',
         (
-            "Nested dictionaries: [{\"user\": {\"name\": \"Alice\"}}, "
-            "{\"settings\": {\"theme\": \"dark\"}}]."
+            'Nested dictionaries: [{"user": {"name": "Alice"}}, '
+            '{"settings": {"theme": "dark"}}].'
         ),
         (
-            "Multiple dicts: {\"key1\": \"value1\"}, {\"key2\": \"value2\"}, "
-            "and {\"key3\": \"value3\"}."
+            'Multiple dicts: {"key1": "value1"}, {"key2": "value2"}, '
+            'and {"key3": "value3"}.'
         ),
-        "Single dict in text: {\"name\": \"John Doe\", \"age\": 30}.",
-        "Dictionary with booleans: [{\"active\": \"True\"}, {\"deleted\": \"False\"}].",
+        'Single dict in text: {"name": "John Doe", "age": 30}.',
+        'Dictionary with booleans: [{"active": "True"}, {"deleted": "False"}].',
     ]
 
     for text in texts_list_of_dicts:

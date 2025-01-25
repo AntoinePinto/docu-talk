@@ -10,7 +10,7 @@ from pymongo import MongoClient
 sys.path.append("src/backend")
 from docu_talk.database.base import ServiceModels
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     load_dotenv()
 

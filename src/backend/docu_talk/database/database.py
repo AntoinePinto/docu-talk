@@ -197,7 +197,7 @@ class Database:
 
         result = self.database[table].update_one(
             filter=filter,
-            update={'$set': updates},
+            update={"$set": updates},
             upsert=True
         )
 

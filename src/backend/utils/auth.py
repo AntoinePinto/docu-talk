@@ -20,7 +20,7 @@ def is_valid_email(email: str):
         True if the email address is valid, False otherwise.
     """
 
-    pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
     return re.match(pattern, email) is not None
 
 def generate_password(length: int = 12):
@@ -57,7 +57,7 @@ def generate_password(length: int = 12):
 
     secrets.SystemRandom().shuffle(password)
 
-    return ''.join(password)
+    return "".join(password)
 
 def hash_password(password: str):
     """
@@ -74,7 +74,7 @@ def hash_password(password: str):
         The hashed password.
     """
 
-    return hashpw(password.encode('utf-8'), gensalt())
+    return hashpw(password.encode("utf-8"), gensalt())
 
 def verify_password(
         password: str,
@@ -96,4 +96,4 @@ def verify_password(
         True if the password matches the hash, False otherwise.
     """
 
-    return checkpw(password.encode('utf-8'), hashed)
+    return checkpw(password.encode("utf-8"), hashed)
