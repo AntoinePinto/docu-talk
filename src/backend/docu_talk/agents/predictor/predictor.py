@@ -58,7 +58,7 @@ class Predictor:
             ],
             value: Any,
             features: dict,
-            metadata: dict = {}
+            metadata: dict | None = None
         ) -> None:
         """
         Logs a metric to the database.
@@ -71,9 +71,12 @@ class Predictor:
             The value of the metric.
         features : dict
             The features associated with the metric.
-        metadata : dict, optional
-            Additional metadata for the metric (default is {}).
+        metadata : dict or None, optional
+            Additional metadata for the metric.
         """
+
+        if metadata is None:
+            metadata = {}
 
         data = {
             "value": value,

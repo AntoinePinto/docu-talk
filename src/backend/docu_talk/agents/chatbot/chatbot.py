@@ -173,8 +173,8 @@ class ChatBotService:
         try:
             desc = extract_dict(response["answer"])
             Desc(**desc)
-        except Exception:
-            raise BadOutputFormatError("Bad LLM output format")
+        except Exception as e:
+            raise BadOutputFormatError("Bad LLM output format") from e
 
         return desc["title"], desc["description"]
 
@@ -260,8 +260,8 @@ class ChatBotService:
         try:
             suggested_prompts = extract_list(response["answer"])
             SuggestedPrompts(items=suggested_prompts)
-        except Exception:
-            raise BadOutputFormatError("Bad LLM output format")
+        except Exception as e:
+            raise BadOutputFormatError("Bad LLM output format") from e
 
         return suggested_prompts
 
@@ -348,8 +348,8 @@ class ChatBotService:
 
         try:
             extracted_sources = extract_list_of_dicts(response["answer"])
-        except Exception:
-            raise BadOutputFormatError("Bad LLM output format")
+        except Exception as e:
+            raise BadOutputFormatError("Bad LLM output format") from e
 
         filenames = [document["filename"] for document in self.documents]
         sources = []

@@ -132,7 +132,7 @@ class Database:
     def get_data(
             self,
             table: str,
-            filter: dict = {},
+            filter: dict | None = None,
             sort: dict | None = None,
             limit: int | None = None
         ) -> list:
@@ -143,8 +143,8 @@ class Database:
         ----------
         table : str
             The name of the table (collection) to retrieve data from.
-        filter : dict, optional
-            The filter criteria for retrieving data (default is {}).
+        filter : dict or None, optional
+            The filter criteria for retrieving data.
         sort : dict or None, optional
             The sort criteria, including column and direction (default is None).
         limit : int or None, optional
@@ -155,6 +155,9 @@ class Database:
         list
             A list of documents matching the criteria.
         """
+
+        if filter is None:
+            filter = {}
 
         cursor = self.database[table].find(filter)
 
