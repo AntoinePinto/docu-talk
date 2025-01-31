@@ -35,7 +35,7 @@ https://github.com/user-attachments/assets/6a03b0a1-a549-4e58-9576-2ee25e0b6ba1
 
 The application relies on a database composed of **MongoDB** and **Cloud Storage**.
 
-**MongoDB** contains the core database of the application, such as access data, created chatbots, and consumed usage (see section X). The connection between the back-end and the MongoDB database is established through a **VPC/NAT configuration**, allowing the container to communicate externally with a static IP whitelisted by MongoDB Atlas, thus preserving the security of the internal network.
+**MongoDB** contains the core database of the application, such as access data, created chatbots, and consumed usage (see section *MongoDB Database*). The connection between the back-end and the MongoDB database is established through a **VPC/NAT configuration**, allowing the container to communicate externally with a static IP whitelisted by MongoDB Atlas, thus preserving the security of the internal network.
 
 **Cloud Storage** is used to store large files, i.e PDFs uploaded by users. Cloud Storage returns **signed and secure URLs** that enable users to access their documents through the application. Finally, Cloud Storage integrates with Gemini by providing only **the URIs** of the documents without needing to read them from the back-end.
 
