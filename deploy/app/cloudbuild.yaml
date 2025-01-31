@@ -5,7 +5,7 @@ steps:
       - '-t'
       - 'europe-west1-docker.pkg.dev/ai-apps-445910/docu-talk/docu-talk:$COMMIT_SHA'
       - '-f'
-      - 'deploy/cloudrun/Dockerfile'
+      - 'deploy/app/Dockerfile'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
