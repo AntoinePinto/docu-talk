@@ -53,16 +53,17 @@ if create_chatbot:
         for document in documents_files: #type: ignore
 
             document_bytes = document.getvalue()
+            nb_pages = get_nb_pages_pdf(document_bytes)
 
             documents.append(
                 {
                     "filename": document.name,
                     "bytes": document_bytes,
-                    "nb_pages": get_nb_pages_pdf(document_bytes)
+                    "nb_pages": nb_pages
                 }
             )
 
-            total_pages += document["nb_pages"]
+            total_pages += nb_pages
 
         if total_pages > MAX_NB_PAGES_PER_CHATBOT:
             st.error(
