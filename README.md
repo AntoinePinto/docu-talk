@@ -49,7 +49,14 @@ The front-end is built using the **Streamlit** framework.
 
 ### Hosting
 
-The application is hosted on Cloud Run and mapped to the domain **docu-talk.ai-apps.cloud**.
+The application is hosted on Cloud Run or Streamlit Cloud and mapped to the domain **docu-talk.ai-apps.cloud**.
+
+### Authentication
+
+3 authentication methods are available in the application:
+* **Email / Password authentication**
+* **Google OAuth 2.0 authentication**
+* **Microsoft OAuth 2.0 Authentication**
 
 ## MongoDB Database
 
