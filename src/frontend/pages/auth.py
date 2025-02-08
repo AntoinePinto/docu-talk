@@ -2,7 +2,7 @@ from string import Template
 
 import streamlit as st
 from assets import templates
-from config import BASE_URL, DISPLAY_GUEST_MODE, ENCODED_LOGO, TEXTS
+from config import DISPLAY_GUEST_MODE, ENCODED_LOGO, TEXTS
 from st_docu_talk import StreamlitDocuTalk
 
 app : StreamlitDocuTalk = st.session_state["app"]
@@ -111,7 +111,7 @@ with col1:
         st.html(templates.auth_or)
 
         html = Template(templates.auth_provider).substitute(
-            redirect_url=f"{BASE_URL}?login_provider=google",
+            redirect_url="?login_provider=google",
             text="Continue with Google",
             logo=(
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/"
@@ -122,7 +122,7 @@ with col1:
         st.html(html)
 
         html = Template(templates.auth_provider).substitute(
-            redirect_url=f"{BASE_URL}?login_provider=microsoft",
+            redirect_url="?login_provider=microsoft",
             text="Continue with Microsoft",
             logo="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
         )
