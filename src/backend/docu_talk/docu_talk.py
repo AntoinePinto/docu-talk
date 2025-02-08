@@ -114,7 +114,9 @@ class DocuTalk:
         password = generate_password()
         password_hash = hash_password(password)
 
-        friendly_name = first_name + " " + last_name[0].upper() + "."
+        friendly_name = first_name
+        if len(last_name) > 0:
+            friendly_name += " " + last_name[0].upper() + "."
 
         self.db.insert_data(
             table="Users",
