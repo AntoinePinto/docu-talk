@@ -1,6 +1,8 @@
 .venv
 .env
+secrets.toml
 __pycache__
 credentials/ai-apps-445910-5a5be0307afd.json
+credentials/gcp_credentials.json
 .vscode
 docs/*

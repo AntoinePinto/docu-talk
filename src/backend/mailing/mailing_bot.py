@@ -41,8 +41,8 @@ class MailingBot:
             self,
             recipient: str,
             first_name: str,
-            id: str,
-            password: str
+            id: str | None = None,
+            password: str | None = None
         ) -> None:
         """
         Sends a welcome email to a new user.
@@ -59,12 +59,18 @@ class MailingBot:
             The generated password for the recipient.
         """
 
-        html = Template(self.emails["welcome"]).substitute(
-            logo=self.encoded_logo,
-            first_name=first_name,
-            id=id,
-            password=password
-        )
+        if id is not None:
+            html = Template(self.emails["welcome"]).substitute(
+                logo=self.encoded_logo,
+                first_name=first_name,
+                id=id,
+                password=password
+            )
+        else:
+            html = Template(self.emails["welcome_no_ids"]).substitute(
+                logo=self.encoded_logo,
+                first_name=first_name
+            )
 
         self.email_service.send_email(
             sender="support@ai-apps.cloud",

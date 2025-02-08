@@ -31,9 +31,25 @@ path = os.path.join(active_dir, "waiting_tips", "waiting_tips_template.html")
 with open(path, encoding="utf-8") as f:
     waiting_tips_template = f.read()
 
+# auth page
+path = os.path.join(active_dir, "auth", "header.html")
+with open(path, encoding="utf-8") as f:
+    auth_header = f.read()
+
+path = os.path.join(active_dir, "auth", "or.html")
+with open(path, encoding="utf-8") as f:
+    auth_or = f.read()
+
+path = os.path.join(active_dir, "auth", "provider.html")
+with open(path, encoding="utf-8") as f:
+    auth_provider = f.read()
+
 __all__ = [
     "remaining_credits_html",
     "about_html",
     "waiting_tips",
-    "waiting_tips_template"
+    "waiting_tips_template",
+    "auth_header",
+    "auth_or",
+    "auth_provider"
 ]

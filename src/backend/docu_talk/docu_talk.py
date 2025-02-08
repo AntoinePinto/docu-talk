@@ -35,20 +35,22 @@ class DocuTalk:
 
         self.models = self.db.get_data(table="ServiceModels")
 
-    def get_users(self) -> list[dict]:
+    def get_users(self) -> list[str]:
         """
         Retrieves all registered users.
 
         Returns
         -------
         list of dict
-            A list of user dictionaries.
+            A list of user emails.
         """
 
-        users = self.db.get_data(
+        data = self.db.get_data(
             table="Users",
             filter={}
         )
+
+        users = [user["email"] for user in data]
 
         return users
 

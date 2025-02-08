@@ -3,10 +3,9 @@ from typing import Any, Literal
 
 import joblib
 import pandas as pd
+from docu_talk.database.database import Database
 from dotenv import load_dotenv
 from sklearn.ensemble import RandomForestRegressor
-
-from docu_talk.database.database import Database
 
 load_dotenv()
 

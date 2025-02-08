@@ -1,5 +1,4 @@
 import streamlit as st
-
 from st_docu_talk import StreamlitDocuTalk
 
 if "app" not in st.session_state:
