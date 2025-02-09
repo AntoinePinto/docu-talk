@@ -24,20 +24,19 @@ with col0:
 
     with st.container(border=True):
 
+        html_header = Template(templates.auth_header).substitute(
+            logo=ENCODED_LOGO
+        )
+
+        st.html(html_header)
+
         st.markdown(TEXTS["welcome"])
 
         st.video("./media/docu_talk.mp4")
 
 with col1:
 
-    # with st.container(border=True):
     with st.form(key="sign_in"):
-
-        html_header = Template(templates.auth_header).substitute(
-            logo=ENCODED_LOGO
-        )
-
-        st.html(html_header)
 
         sign_in, sign_up = st.tabs(["Sign in",  "Sign Up"])
 
@@ -73,14 +72,14 @@ with col1:
 
         with sign_up:
 
-            col0, col1 = st.columns(2)
-
             email = st.text_input(
                 label="Email",
                 placeholder="Email",
                 label_visibility="collapsed",
                 key="sign_up_mail"
             )
+
+            col0, col1 = st.columns(2)
 
             first_name = col0.text_input(
                 label="First Name",
