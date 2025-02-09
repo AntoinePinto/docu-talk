@@ -6,7 +6,7 @@ for path in ["src/frontend", "src/backend"]:
     if path not in sys.path:
         sys.path.append(path)
 
-from st_docu_talk import StreamlitDocuTalk
+from st_docu_talk import StreamlitDocuTalk  # noqa: E402
 
 if "app" not in st.session_state:
     st.session_state["app"] = StreamlitDocuTalk()
