@@ -1,13 +1,13 @@
 <div align="center">
 
 <h1 align="center">
-  <a href="https://docu-talk.ai-apps.cloud/"><img src="./src/frontend/assets/logo_docu_talk.png" width="40"></a>
+  <a href="https://docu-talk-ai-apps.streamlit.app//"><img src="./src/frontend/assets/logo_docu_talk.png" width="40"></a>
   <br>
   <b>Docu Talk</b>
   <br>
 </h1>
 
-🔗 [https://docu-talk.ai-apps.cloud](https://docu-talk.ai-apps.cloud/)
+🔗 [https://docu-talk-ai-apps.streamlit.app/](https://docu-talk-ai-apps.streamlit.app//)
 
 ![Static Badge](https://img.shields.io/badge/python-3.12-blue)
 ![Static Badge](https://img.shields.io/badge/streamlit-1.42.0-red)
@@ -25,7 +25,7 @@ Docu Talk is an AI-powered platform that allows you to **create custom chatbots 
 
 Demo video:
 
-https://github.com/user-attachments/assets/6a03b0a1-a549-4e58-9576-2ee25e0b6ba1
+https://github.com/user-attachments/assets/ebf7aca9-1309-4c4e-a1ed-16585ec89eff
 
 ## Network Architecture
 
