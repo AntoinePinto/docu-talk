@@ -10,13 +10,18 @@
         "price_per_unit": 0.0000006
     },
     {
-        "name": "gemini-2.0-flash-exp",
+        "name": "gemini-2.0-flash-001",
         "unit": "characters",
-        "price_per_unit": 0.00000003
+        "price_per_unit": 0.000000039
     },
     {
-        "name": "gemini-2.0-pro-exp",
+        "name": "gemini-2.0-pro-exp-02-05",
         "unit": "characters",
-        "price_per_unit": 0.0000006
+        "price_per_unit": 0.00000078
+    },
+    {
+        "name": "gemini-2.5-pro-exp-03-05",
+        "unit": "characters",
+        "price_per_unit": 0.00000078
     }
 ]
