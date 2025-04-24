@@ -1,1 +1,0 @@
-Docu Talk is an **AI-powered application** that allows you to **create custom chatbots based on your own documents**.

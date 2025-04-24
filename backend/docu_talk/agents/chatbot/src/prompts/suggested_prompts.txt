@@ -1,0 +1,1 @@
+The above documents are those that will be integrated into a new dedicated Chat Bot. To help the user, return a JSON list containing 5 examples of prompts that will be suggested to the user. Each prompt should be a maximum of 15 words. It should be a JSON list (not dictionnary).

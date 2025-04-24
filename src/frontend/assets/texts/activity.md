@@ -1,1 +1,0 @@
-:material/person_add: *{delta}* - **{name}** has joined the application!

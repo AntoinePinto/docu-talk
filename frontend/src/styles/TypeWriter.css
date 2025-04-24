@@ -1,0 +1,24 @@
+.typewriter {
+  display: inline-block;
+  position: relative;
+  min-height: 1.2em;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+.typewriter.error {
+  color: #e53e3e;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+} 

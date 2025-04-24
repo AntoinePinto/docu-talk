@@ -1,1 +1,0 @@
-Hmm... I failed to define title & description of your chatbot. I'm going to set the title to '**{title}**' and the description to '**{description}**' for now.
