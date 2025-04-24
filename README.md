@@ -9,7 +9,7 @@
 
 🔗 [https://docu-talk.ai-apps.cloud](https://docu-talk.ai-apps.cloud)
 
-![Static Badge](https://img.shields.io/badge/python-3.12-blue)
+![Static Badge](https://img.shields.io/badge/python-3.10-blue)
 ![Static Badge](https://img.shields.io/badge/database-MongoDB-green)
 ![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)
 
