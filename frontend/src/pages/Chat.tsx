@@ -286,7 +286,7 @@ const Chat = () => {
       return
     }
 
-    const selectedModel = usePremiumModel ? 'gemini-1.5-pro-002' : 'gemini-1.5-flash-002'
+    const selectedModel = usePremiumModel ? 'gemini-1.5-pro-002' : 'gemini-2.0-flash-001'
     
     try {
       setIsLoading(true)
@@ -410,7 +410,7 @@ const Chat = () => {
       return
     }
 
-    const selectedModel = usePremiumModel ? 'gemini-1.5-pro-002' : 'gemini-1.5-flash-002'
+    const selectedModel = usePremiumModel ? 'gemini-1.5-pro-002' : 'gemini-2.0-flash-001'
     
     try {
       // Set loading state and reset estimated duration
