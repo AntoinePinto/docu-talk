@@ -1,13 +1,13 @@
 <div align="center">
 
 <h1 align="center">
-  <a href="https://docu-talk-ai-apps.cloud/"><img src="./src/frontend/assets/logo_docu_talk.png" width="40"></a>
+  <a href="https://docu-talk.ai-apps.cloud"><img src="./media/logo.png" width="40"></a>
   <br>
   <b>Docu Talk</b>
   <br>
 </h1>
 
-🔗 [https://docu-talk-ai-apps.cloud/](https://docu-talk-ai-apps.cloud//)
+🔗 [https://docu-talk.ai-apps.cloud](https://docu-talk.ai-apps.cloud)
 
 ![Static Badge](https://img.shields.io/badge/python-3.12-blue)
 ![Static Badge](https://img.shields.io/badge/database-MongoDB-green)
