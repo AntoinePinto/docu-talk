@@ -88,14 +88,30 @@ def check_user_access(
 
     if chatbot_id not in user_accesses:
 
-        raise HTTPException(
-            status_code=403,
-            detail="You don't have access to this chatbot"
+        chatbots_data = docu_talk.db.get_data(
+            table="Chatbots",
+            filter={"id": chatbot_id}
         )
+
+        if len(chatbots_data) == 0:
+
+            raise HTTPException(
+                status_code=404,
+                detail="Chatbot not found"
+            )
+
+        chatbot_data = chatbots_data[0]
+
+        if chatbot_data["access"] != "public":
+
+            raise HTTPException(
+                status_code=403,
+                detail="You don't have access to this chatbot"
+            )
 
     if check_admin:
 
-        if user_accesses[chatbot_id] != "Admin":
+        if user_accesses.get(chatbot_id) != "Admin":
 
             raise HTTPException(
                 status_code=403,
