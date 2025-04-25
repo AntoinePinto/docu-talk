@@ -174,8 +174,7 @@ async def google_auth(google_token: GoogleToken):
 
         mailing_bot.send_welcome_email(
             recipient=email,
-            first_name=first_name,
-            id=email
+            first_name=first_name
         )
 
     access_token = create_access_token(
@@ -242,8 +241,7 @@ async def microsoft_auth(
 
         mailing_bot.send_welcome_email(
             recipient=email,
-            first_name=first_name,
-            id=email
+            first_name=first_name
         )
 
     # Create our own JWT token
