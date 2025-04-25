@@ -24,7 +24,7 @@ Docu Talk is an AI-powered platform that allows you to **create custom chatbots 
 
 Demo video:
 
-https://github.com/user-attachments/assets/9a00968e-720b-4894-a831-838a78e78624
+https://github.com/user-attachments/assets/e49b1dd0-47f7-44c9-8af0-a40581945865
 
 ## Network Architecture
 
