@@ -3,42 +3,37 @@ export const termsOfUse = `
 
 Last updated: ${new Date().toLocaleDateString()}
 
-## 1. Acceptance of Terms
+### 1. **Data Collection**
 
-By accessing and using Docu Talk ("the Service"), you accept and agree to be bound by the terms and provision of this agreement.
+The application collects certain types of data to ensure its operation and to improve the quality of the services offered.
 
-## 2. Description of Service
+We employ industry-standard measures to protect your data. However, no system is entirely secure, and we cannot guarantee absolute security.
 
-Docu Talk provides AI-powered document analysis and conversation services. The Service allows users to upload documents and interact with them through AI-powered chat.
+---
 
-## 3. User Accounts
+### 2. **Use of Artificial Intelligence (AI)**
 
-To use certain features of the Service, you must register for an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.
+The chatbot integrated into our application uses AI to generate responses based on the information it has been trained on. These responses are generated dynamically and may vary depending on the context; may not always be accurate, complete, or up-to-date. We advise users to carefully review and verify the chatbot's responses before acting on them.
 
-## 4. Privacy Policy
+We are not responsible for any errors, omissions, or inaccuracies in the chatbot’s responses and for any actions taken based on the chatbot’s responses.
 
-Your use of the Service is also governed by our Privacy Policy. Please review our Privacy Policy to understand our practices.
+---
 
-## 5. User Conduct
+### 3. **User Responsibilities**
 
-You agree not to use the Service to:
-- Upload or transmit any content that is unlawful, harmful, or infringing
-- Interfere with or disrupt the Service
-- Attempt to gain unauthorized access to any portion of the Service
+*  Users agree to use the application for lawful purposes only.
+*  Users are responsible for ensuring that any data they provide, including account details and uploaded documents, is accurate and lawful.
+*  Users must not attempt to reverse-engineer or manipulate the chatbot or application functionalities.
+*  Use the platform to distribute harmful, misleading, or inappropriate content.
 
-## 6. Intellectual Property
+---
 
-The Service and its original content, features, and functionality are owned by Docu Talk and are protected by international copyright, trademark, and other intellectual property laws.
+### 6. **Modifications to the Terms**
 
-## 7. Limitation of Liability
+We reserve the right to update or modify these terms at any time. Users will be notified of significant changes, and continued use of the application constitutes acceptance of the updated terms.
 
-Docu Talk shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Service.
+---
 
-## 8. Changes to Terms
-
-We reserve the right to modify these terms at any time. We will notify users of any material changes to the Terms of Use.
-
-## 9. Contact Information
-
-If you have any questions about these Terms of Use, please contact us at support@docutalk.com.
+### 7. **Contact Us**
+If you have any questions or concerns about these terms, please contact us at: support@ai-apps.cloud
 `; 
