@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -11,6 +11,12 @@ import { UserProvider } from './components/auth/UserContext'
 import PrivateRoute from './components/auth/PrivateRoute'
 import Tips from './components/ui/Tips'
 import MainLayout from './components/layout/MainLayout'
+import { useAuth } from './components/auth/AuthContext'
+
+function RootRedirect() {
+  const { isAuthenticated } = useAuth()
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />
+}
 
 function App() {
   return (
@@ -19,7 +25,7 @@ function App() {
         <UserProvider>
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<RootRedirect />} />
               <Route
                 path="/dashboard"
                 element={

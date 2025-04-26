@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import axios from 'axios'
 
 interface AuthContextType {
@@ -26,6 +26,13 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [token, setToken] = useState<string | null>(localStorage.getItem('token'))
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token')
+    if (storedToken) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`
+    }
+  }, [])
 
   const login = async (email: string, password: string) => {
     try {
