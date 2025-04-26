@@ -5,7 +5,7 @@ from typing import Literal, Optional
 
 import httpx
 import jwt
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Form
 from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import BaseModel
 
@@ -496,3 +496,42 @@ async def set_terms_accepted(
     )
 
     return {"message": "Terms of use accepted"}
+
+@router.post("/submit_feedback")
+async def submit_feedback(
+    type: str = Form(...),
+    title: str = Form(...),
+    description: str = Form(...),
+    email: str = Depends(get_current_user)
+):
+    """
+    Submit user feedback.
+
+    Parameters
+    ----------
+    type : str
+        The type of feedback (bug or feature).
+    title : str
+        The title of the feedback.
+    description : str
+        The detailed description of the feedback.
+    email : str
+        The current authenticated user's email.
+
+    Returns
+    -------
+    dict
+        A message confirming feedback submission.
+    """
+
+    docu_talk.db.insert_data(
+        table="Feedbacks",
+        data={
+            "user_id": email,
+            "type": type,
+            "title": title,
+            "description": description
+        }
+    )
+
+    return {"message": "Feedback submitted successfully"}

@@ -4,6 +4,7 @@ import { useUser } from '../auth/UserContext';
 import DashboardHeader from '../layout/DashboardHeader';
 import { SettingsSidebar } from '../SettingsSidebar';
 import TermsOfUseModal from '../TermsOfUseModal';
+import FloatingFeedbackButton from '../FloatingFeedbackButton';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -39,6 +40,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         onOpenSettings={() => setIsOpen(true)}
       />
       {children}
+
+      <FloatingFeedbackButton />
 
       <Drawer
         isOpen={isOpen}

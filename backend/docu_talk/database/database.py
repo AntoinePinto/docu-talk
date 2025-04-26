@@ -16,6 +16,7 @@ from docu_talk.database.base import (
     SuggestedPrompt,
     Usage,
     User,
+    Feedback
 )
 
 
@@ -36,7 +37,8 @@ class Database:
         AskChatbotDuration,
         AskChatbotTokenCount,
         Conversation,
-        Message
+        Message,
+        Feedback
     ]
 
     def __init__(

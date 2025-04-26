@@ -71,6 +71,7 @@ The MongoDB database contains the majority of the data stored by the application
 * **Usages**: A table indicating the usage consumed by users, broken down by the model used.
 * **ServiceModels**: A collection of available generation models along with their pricing levels.
 * **Convesations**: A table containing the list of conversations for each chatbot and each user.
-* **ServiceModels**: A table containing user and assistant messages.
+* **Messages**: A table containing user and assistant messages.
+* **Feedbacks**: A table containing user feedbacks (bugs or feature requests).
 
 The **AskChatbotTokenCounts**, **AskChatbotDurations**, and **CreateChatbotDurations** tables are used to log various metrics. These metrics are frequently used to retrain Machine Learning models to estimate waiting times or credits consumed before executing different processes.

@@ -127,3 +127,12 @@ class Message(BaseModel):
     role: str
     content: str
 
+class Feedback(BaseModel):
+    __tablename__ = "Feedbacks"
+
+    id: str
+    timestamp: datetime
+    user_id: str
+    type: str
+    title: str
+    description: str
