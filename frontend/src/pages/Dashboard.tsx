@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Container, useColorModeValue, useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
@@ -14,6 +14,7 @@ const Dashboard = () => {
   const navigate = useNavigate()
   const { logout } = useAuth()
   const [isDeleting, setIsDeleting] = useState(false)
+  const [showContent, setShowContent] = useState(false)
   
   // Disclosure hooks for modals and drawers
   const { isOpen, onClose } = useDisclosure()
@@ -24,6 +25,16 @@ const Dashboard = () => {
   const cardBg = useColorModeValue('white', 'gray.800')
   const headingColor = useColorModeValue('gray.700', 'white')
   const textColor = useColorModeValue('gray.600', 'gray.300')
+
+  useEffect(() => {
+    if (!isLoading) {
+      // Add a small delay before showing the content
+      const timer = setTimeout(() => {
+        setShowContent(true)
+      }, 500) // 500ms delay to allow progress bar to complete
+      return () => clearTimeout(timer)
+    }
+  }, [isLoading])
 
   const handleDeleteAccount = async () => {
     try {
@@ -49,8 +60,8 @@ const Dashboard = () => {
     }
   }
 
-  if (isLoading) {
-    return <LoadingState bgColor={bgColor} />
+  if (isLoading || !showContent) {
+    return <LoadingState bgColor={bgColor} isApiResponded={!isLoading} />
   }
 
   return (
