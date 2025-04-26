@@ -6,6 +6,7 @@ import { Chatbot } from '../../components/auth/UserContext';
 import DocumentSelector from './DocumentSelector';
 import { useEffect, useRef } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
+import ProgressTimer from '../common/ProgressTimer';
 
 interface Message {
     text: string;
@@ -254,29 +255,15 @@ const MessageList = ({
                   transition: 'all 0.2s ease-in-out',
                 }}
               >
-                <Flex align="center" gap={3}>
-                  <Box
-                    position="relative"
-                    width="24px"
-                    height="24px"
-                    animation={`${spin} 1s linear infinite`}
-                  >
-                    <Box
-                      position="absolute"
-                      top="0"
-                      left="0"
-                      width="100%"
-                      height="100%"
-                      border="2px solid"
-                      borderColor="transparent"
-                      borderTopColor="blue.500"
-                      borderRadius="50%"
-                    />
-                  </Box>
-                  <Text color={textColor}>
-                    Estimation response time: {estimatedDuration} seconds
-                  </Text>
-                </Flex>
+                {estimatedDuration && (
+                  <ProgressTimer 
+                    duration={estimatedDuration} 
+                    size="sm"
+                    width="200px"
+                    showText={true}
+                    colorScheme="blue"
+                  />
+                )}
               </Box>
             </Flex>
           )}
