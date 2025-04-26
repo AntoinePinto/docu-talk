@@ -21,7 +21,7 @@ const HeaderActions: React.FC<HeaderActionsProps> = ({
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   return (

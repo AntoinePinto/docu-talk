@@ -216,7 +216,7 @@ const Chat = () => {
   const createConversation = async () => {
     const token = localStorage.getItem('token')
     if (!token || !chatbotId) {
-      navigate('/login')
+      navigate('/')
       return
     }
 
@@ -282,7 +282,7 @@ const Chat = () => {
   const sendMessage = useCallback(async (message: string) => {
     const token = localStorage.getItem('token')
     if (!token || !chatbotId) {
-      navigate('/login')
+      navigate('/')
       return
     }
 
@@ -395,7 +395,7 @@ const Chat = () => {
   const handleSourceIdentification = async () => {
     const token = localStorage.getItem('token')
     if (!token || !chatbotId || !conversationId) {
-      navigate('/login')
+      navigate('/')
       return
     }
 
@@ -488,7 +488,7 @@ const Chat = () => {
     try {
       const token = localStorage.getItem('token')
       if (!token) {
-        navigate('/login')
+        navigate('/')
         return
       }
       
@@ -533,7 +533,7 @@ const Chat = () => {
     try {
       const token = localStorage.getItem('token')
       if (!token) {
-        navigate('/login')
+        navigate('/')
         return
       }
       
@@ -579,7 +579,7 @@ const Chat = () => {
     try {
       const token = localStorage.getItem('token')
       if (!token) {
-        navigate('/login')
+        navigate('/')
         return
       }
       

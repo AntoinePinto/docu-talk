@@ -8,6 +8,7 @@ import LoadingState from '../components/dashboard/LoadingState'
 import ChatbotsSection from '../components/dashboard/ChatbotsSection'
 import SettingsDrawer from '../components/dashboard/SettingsDrawer'
 import DeleteAccountDialog from '../components/dashboard/DeleteAccountDialog'
+import SEO from '../components/SEO'
 
 const Dashboard = () => {
   const { user, isLoading } = useUser()
@@ -42,7 +43,7 @@ const Dashboard = () => {
       const token = localStorage.getItem('token')
       
       if (!token) {
-        navigate('/login')
+        navigate('/')
         return
       }
       
@@ -51,7 +52,7 @@ const Dashboard = () => {
       })
       
       logout()
-      navigate('/login')
+      navigate('/')
     } catch (error) {
       console.error('Error deleting account:', error)
     } finally {
@@ -65,33 +66,36 @@ const Dashboard = () => {
   }
 
   return (
-    <Box minH="100vh" bg={bgColor}>
-      <Container 
-        maxW="container.xl" 
-        py={{ base: 4, md: 8 }}
-        px={{ base: 4, md: 6 }}
-      >
-        <ChatbotsSection
-          chatbots={user?.chatbots || []}
-          cardBg={cardBg}
-          headingColor={headingColor}
-          textColor={textColor}
+    <>
+      <SEO title="Dashboard" />
+      <Box minH="100vh" bg={bgColor}>
+        <Container 
+          maxW="container.xl" 
+          py={{ base: 4, md: 8 }}
+          px={{ base: 4, md: 6 }}
+        >
+          <ChatbotsSection
+            chatbots={user?.chatbots || []}
+            cardBg={cardBg}
+            headingColor={headingColor}
+            textColor={textColor}
+          />
+        </Container>
+
+        <SettingsDrawer
+          isOpen={isOpen}
+          onClose={onClose}
+          onDeleteAlertOpen={onDeleteAlertOpen}
         />
-      </Container>
 
-      <SettingsDrawer
-        isOpen={isOpen}
-        onClose={onClose}
-        onDeleteAlertOpen={onDeleteAlertOpen}
-      />
-
-      <DeleteAccountDialog
-        isOpen={isDeleteAlertOpen}
-        onClose={onDeleteAlertClose}
-        onDelete={handleDeleteAccount}
-        isDeleting={isDeleting}
-      />
-    </Box>
+        <DeleteAccountDialog
+          isOpen={isDeleteAlertOpen}
+          onClose={onDeleteAlertClose}
+          onDelete={handleDeleteAccount}
+          isDeleting={isDeleting}
+        />
+      </Box>
+    </>
   )
 }
 

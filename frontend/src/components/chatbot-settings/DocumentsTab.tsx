@@ -124,7 +124,7 @@ const DocumentsTab = ({ documents, onDelete, chatbotId, onUploadSuccess }: Docum
       setDeletingDocumentId(documentId)
       const token = localStorage.getItem('token')
       if (!token) {
-        navigate('/login')
+        navigate('/')
         return
       }
 

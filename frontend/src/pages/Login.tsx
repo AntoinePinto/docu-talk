@@ -14,6 +14,7 @@ import { useUser } from '../components/auth/UserContext'
 import AuthForm from '../components/auth/AuthForm'
 import BrandingSection from '../components/auth/BrandingSection'
 import { keyframes } from '@emotion/react'
+import SEO from '../components/SEO'
 
 // Types
 interface FormData {
@@ -400,85 +401,93 @@ const Login = () => {
   };
 
   return (
-    <Box 
-      minH="100vh" 
-      position="relative" 
-      overflow="hidden" 
-      display="flex" 
-      alignItems="center"
-      py={{ base: 4, md: 8 }}
-      px={{ base: 0, md: 4 }}
-    >
-      {/* Background Image with Overlay */}
-      <Box
-        position="absolute"
-        top={0}
-        left={0}
-        right={0}
-        bottom={0}
-        zIndex={0}
-        backgroundImage={`url('https://storage.googleapis.com/ai-apps-lab-public/Dashboard.png')`}
-        backgroundSize="cover"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-        opacity={0.7}
-        animation={`${pulse} 8s ease-in-out infinite`}
-        _before={{
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.6) 100%)',
-        }}
+    <>
+      <SEO 
+        isMainPage={true}
+        title="Welcome to Docu Talk"
+        description="Create and manage AI chatbots for your documents. Transform your documents into interactive AI assistants that can answer questions and provide insights. Sign in to get started."
+        keywords="AI chatbot, document analysis, AI assistant, document management, chatbot creation, AI technology"
       />
-
-      <Container 
-        maxW={containerMaxWidth} 
+      <Box 
+        minH="100vh" 
         position="relative" 
-        zIndex={1}
-        p={containerPadding}
+        overflow="hidden" 
+        display="flex" 
+        alignItems="center"
+        py={{ base: 4, md: 8 }}
+        px={{ base: 0, md: 4 }}
       >
-        <Flex
-          align="center"
-          justify="center"
-          direction={{ base: 'column', md: 'row' }}
-          gap={containerSpacing}
-          mx="auto"
-          maxW={{ base: "100%", md: "1200px" }}
+        {/* Background Image with Overlay */}
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          zIndex={0}
+          backgroundImage={`url('https://storage.googleapis.com/ai-apps-lab-public/Dashboard.png')`}
+          backgroundSize="cover"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          opacity={0.7}
+          animation={`${pulse} 8s ease-in-out infinite`}
+          _before={{
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.6) 100%)',
+          }}
+        />
+
+        <Container 
+          maxW={containerMaxWidth} 
+          position="relative" 
+          zIndex={1}
+          p={containerPadding}
         >
-          <BrandingSection animation={slideAnimation} />
-          
-          <AuthForm
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            loginForm={{
-              formData: loginForm.formData as LoginFormData,
-              errors: loginForm.errors,
-              showPassword: loginForm.showPassword,
-              setShowPassword: loginForm.setShowPassword,
-              handleInputChange: loginForm.handleInputChange,
-            }}
-            signUpForm={{
-              formData: signUpForm.formData as SignUpFormData,
-              errors: signUpForm.errors,
-              showPassword: signUpForm.showPassword,
-              setShowPassword: signUpForm.setShowPassword,
-              handleInputChange: signUpForm.handleInputChange,
-            }}
-            onLogin={handleLogin}
-            onSignUp={handleSignUp}
-            onGoogleLogin={() => googleLogin()}
-            onMicrosoftLogin={handleMicrosoftLogin}
-            isLoading={isLoading}
-            isGoogleLoading={isGoogleLoading}
-            isMicrosoftLoading={isMicrosoftLoading}
-            animation={animation}
-          />
-        </Flex>
-      </Container>
-    </Box>
+          <Flex
+            align="center"
+            justify="center"
+            direction={{ base: 'column', md: 'row' }}
+            gap={containerSpacing}
+            mx="auto"
+            maxW={{ base: "100%", md: "1200px" }}
+          >
+            <BrandingSection animation={slideAnimation} />
+            
+            <AuthForm
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              loginForm={{
+                formData: loginForm.formData as LoginFormData,
+                errors: loginForm.errors,
+                showPassword: loginForm.showPassword,
+                setShowPassword: loginForm.setShowPassword,
+                handleInputChange: loginForm.handleInputChange,
+              }}
+              signUpForm={{
+                formData: signUpForm.formData as SignUpFormData,
+                errors: signUpForm.errors,
+                showPassword: signUpForm.showPassword,
+                setShowPassword: signUpForm.setShowPassword,
+                handleInputChange: signUpForm.handleInputChange,
+              }}
+              onLogin={handleLogin}
+              onSignUp={handleSignUp}
+              onGoogleLogin={() => googleLogin()}
+              onMicrosoftLogin={handleMicrosoftLogin}
+              isLoading={isLoading}
+              isGoogleLoading={isGoogleLoading}
+              isMicrosoftLoading={isMicrosoftLoading}
+              animation={animation}
+            />
+          </Flex>
+        </Container>
+      </Box>
+    </>
   );
 };
 

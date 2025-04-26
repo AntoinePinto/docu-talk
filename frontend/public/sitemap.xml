@@ -2,44 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://docu-talk.ai-apps.cloud/</loc>
-    <lastmod>2025-04-26</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://docu-talk.ai-apps.cloud/login</loc>
-    <lastmod>2025-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docu-talk.ai-apps.cloud/dashboard</loc>
-    <lastmod>2025-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://docu-talk.ai-apps.cloud/chat</loc>
-    <lastmod>2025-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://docu-talk.ai-apps.cloud/create-chatbot</loc>
-    <lastmod>2025-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://docu-talk.ai-apps.cloud/chatbot-settings</loc>
-    <lastmod>2025-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://docu-talk.ai-apps.cloud/feedback</loc>
-    <lastmod>2025-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset> 
