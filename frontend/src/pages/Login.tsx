@@ -6,6 +6,7 @@ import {
   Flex,
   Container,
   useBreakpointValue,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { PublicClientApplication, EventType, Configuration, LogLevel, AuthenticationResult } from '@azure/msal-browser'
@@ -13,6 +14,7 @@ import { useAuth } from '../components/auth/AuthContext'
 import { useUser } from '../components/auth/UserContext'
 import AuthForm from '../components/auth/AuthForm'
 import BrandingSection from '../components/auth/BrandingSection'
+import AuthLoadingState from '../components/auth/AuthLoadingState'
 import { keyframes } from '@emotion/react'
 import SEO from '../components/SEO'
 
@@ -165,11 +167,14 @@ const Login = () => {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isMicrosoftLoading, setIsMicrosoftLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [showLoadingState, setShowLoadingState] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("Authenticating...");
   
   const navigate = useNavigate();
   const { login, loginWithToken } = useAuth();
   const { refreshUserData } = useUser();
   const toast = useToast();
+  const bgColor = useColorModeValue('gray.50', 'gray.900');
 
   const loginForm = useForm({ email: '', password: '' });
   const signUpForm = useForm({ 
@@ -228,6 +233,8 @@ const Login = () => {
 
     try {
       setIsMicrosoftLoading(true);
+      setShowLoadingState(true);
+      setLoadingMessage("Continuing with Microsoft...");
       
       try {
         const silentResponse = await msalInstance.acquireTokenSilent(LOGIN_REQUEST);
@@ -247,6 +254,7 @@ const Login = () => {
       handleAuthError('Microsoft', error);
     } finally {
       setIsMicrosoftLoading(false);
+      setShowLoadingState(false);
     }
   };
 
@@ -281,6 +289,9 @@ const Login = () => {
   const handleGoogleSuccess = async (response: { access_token: string }) => {
     try {
       setIsGoogleLoading(true);
+      setShowLoadingState(true);
+      setLoadingMessage("Continuing with Google...");
+      
       const backendResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -302,6 +313,7 @@ const Login = () => {
       handleAuthError('Google', error);
     } finally {
       setIsGoogleLoading(false);
+      setShowLoadingState(false);
     }
   };
 
@@ -332,6 +344,8 @@ const Login = () => {
     }
     
     setIsLoading(true);
+    setShowLoadingState(true);
+    setLoadingMessage("Signing in...");
 
     try {
       await login(loginForm.formData.email, loginForm.formData.password);
@@ -340,6 +354,7 @@ const Login = () => {
       handleAuthError('Login', error);
     } finally {
       setIsLoading(false);
+      setShowLoadingState(false);
     }
   };
 
@@ -351,6 +366,8 @@ const Login = () => {
     }
     
     setIsLoading(true);
+    setShowLoadingState(true);
+    setLoadingMessage("Creating your account...");
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
@@ -397,8 +414,13 @@ const Login = () => {
       handleAuthError('Sign Up', error);
     } finally {
       setIsLoading(false);
+      setShowLoadingState(false);
     }
   };
+
+  if (showLoadingState) {
+    return <AuthLoadingState bgColor={bgColor} message={loadingMessage} />;
+  }
 
   return (
     <>
@@ -416,6 +438,7 @@ const Login = () => {
         alignItems="center"
         py={{ base: 4, md: 8 }}
         px={{ base: 0, md: 4 }}
+        bg={bgColor}
       >
         {/* Background Image with Overlay */}
         <Box
