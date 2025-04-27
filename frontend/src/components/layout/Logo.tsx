@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from '@chakra-ui/react';
-import logo from '../../assets/logo.svg';
+import logo from '../../../public/logo.svg';
 
 const Logo: React.FC = () => {
   return (

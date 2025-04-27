@@ -404,7 +404,7 @@ const Login = () => {
     <>
       <SEO 
         isMainPage={true}
-        title="Welcome to Docu Talk"
+        title="Docu Talk - Create custom AI chatbots based on your own documents"
         description="Create and manage AI chatbots for your documents. Transform your documents into interactive AI assistants that can answer questions and provide insights. Sign in to get started."
         keywords="AI chatbot, document analysis, AI assistant, document management, chatbot creation, AI technology"
       />

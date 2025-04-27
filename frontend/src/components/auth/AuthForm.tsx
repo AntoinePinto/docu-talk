@@ -1,5 +1,5 @@
 import { Box, VStack, Image, Heading, HStack, Divider, Text } from '@chakra-ui/react';
-import logo from '../../assets/logo.svg';
+import logo from '../../../public/logo.svg';
 import SocialAuthButtons from './SocialAuthButtons';
 import AuthTabs from './AuthTabs';
 

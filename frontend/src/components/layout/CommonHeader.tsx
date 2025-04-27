@@ -11,7 +11,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { FiArrowLeft } from 'react-icons/fi';
-import logo from '../../assets/logo.svg';
+import logo from '../../../public/logo.svg';
 import CreditsDisplay from '../ui/CreditsDisplay';
 import UserProfile from '../auth/UserProfile';
 import HeaderActions from '../layout/HeaderActions';

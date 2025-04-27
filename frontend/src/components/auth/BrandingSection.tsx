@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Image, Text, IconButton, useColorModeValue } from '@chakra-ui/react';
 import { FiMaximize2 } from 'react-icons/fi';
-import logo from '../../assets/logo.svg';
+import logo from '../../../public/logo.svg';
 import { useRef } from 'react';
 
 interface BrandingSectionProps {
