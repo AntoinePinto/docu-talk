@@ -61,7 +61,7 @@ const FloatingFeedbackButton: React.FC = () => {
         >
           <IconButton
             aria-label="Submit Feedback"
-            icon={<FaLightbulb style={{ color: '#D69E2E' }} />}
+            icon={<FaLightbulb style={{ color: '#2B6CB0' }} />}
             bg="blue.100"
             colorScheme="blue"
             size="lg"
