@@ -5,7 +5,6 @@ import Dashboard from './pages/Dashboard'
 import Chat from './pages/Chat'
 import CreateChatbot from './pages/CreateChatbot'
 import ChatbotSettings from './pages/ChatbotSettings'
-import Feedback from './pages/Feedback'
 import { AuthProvider } from './components/auth/AuthContext'
 import { UserProvider } from './components/auth/UserContext'
 import PrivateRoute from './components/auth/PrivateRoute'
@@ -66,17 +65,6 @@ function App() {
                     <MainLayout>
                       <Tips />
                       <CreateChatbot />
-                    </MainLayout>
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/feedback"
-                element={
-                  <PrivateRoute>
-                    <MainLayout>
-                      <Tips />
-                      <Feedback />
                     </MainLayout>
                   </PrivateRoute>
                 }

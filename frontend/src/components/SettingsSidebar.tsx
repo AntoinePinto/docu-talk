@@ -3,12 +3,10 @@ import { Box, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody,
 import ReactMarkdown from 'react-markdown';
 import { termsOfUse } from '../data/termsOfUse';
 import { useAuth } from './auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export const SettingsSidebar: React.FC = () => {
   const { logout } = useAuth();
-  const navigate = useNavigate();
   const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -49,13 +47,6 @@ export const SettingsSidebar: React.FC = () => {
       </Text>
 
       <VStack spacing={4} align="stretch">
-        <Button
-          variant="outline"
-          onClick={() => navigate('/feedback')}
-        >
-          Submit Feedback
-        </Button>
-
         <Button
           variant="outline"
           onClick={() => setIsTermsOpen(true)}

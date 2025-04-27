@@ -4,5 +4,4 @@ Disallow: /dashboard
 Disallow: /chat
 Disallow: /create-chatbot
 Disallow: /chatbot-settings
-Disallow: /feedback
 Sitemap: https://docu-talk.ai-apps.cloud/sitemap.xml 
