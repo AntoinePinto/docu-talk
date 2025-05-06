@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import Home from './pages/Home'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Chat from './pages/Chat'
@@ -14,7 +15,7 @@ import { useAuth } from './components/auth/AuthContext'
 
 function RootRedirect() {
   const { isAuthenticated } = useAuth()
-  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <Home />
 }
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <Routes>
               <Route path="/" element={<RootRedirect />} />
+              <Route path="/login" element={<Login />} />
               <Route
                 path="/dashboard"
                 element={

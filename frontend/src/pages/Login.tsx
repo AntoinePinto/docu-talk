@@ -7,6 +7,7 @@ import {
   Container,
   useBreakpointValue,
   useColorModeValue,
+  IconButton,
 } from '@chakra-ui/react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { PublicClientApplication, EventType, Configuration, LogLevel, AuthenticationResult } from '@azure/msal-browser'
@@ -17,6 +18,7 @@ import BrandingSection from '../components/auth/BrandingSection'
 import AuthLoadingState from '../components/auth/AuthLoadingState'
 import { keyframes } from '@emotion/react'
 import SEO from '../components/SEO'
+import { FiArrowLeft } from 'react-icons/fi'
 
 // Types
 interface FormData {
@@ -424,22 +426,8 @@ const Login = () => {
 
   return (
     <>
-      <SEO 
-        isMainPage={true}
-        title="Create AI chatbots based on your documents"
-        description="Create and manage AI chatbots for your documents. Transform your documents into interactive AI assistants that can answer questions and provide insights. Sign in to get started."
-        keywords="AI chatbot, document analysis, AI assistant, document management, chatbot creation, AI technology"
-      />
-      <Box 
-        minH="100vh" 
-        position="relative" 
-        overflow="hidden" 
-        display="flex" 
-        alignItems="center"
-        py={{ base: 4, md: 8 }}
-        px={{ base: 0, md: 4 }}
-        bg={bgColor}
-      >
+      <SEO title="Login" />
+      <Box minH="100vh" position="relative" overflow="hidden" display="flex" alignItems="center" py={{ base: 4, md: 8 }} px={{ base: 0, md: 4 }} bg={bgColor}>
         {/* Background Image with Overlay */}
         <Box
           position="absolute"
@@ -465,19 +453,22 @@ const Login = () => {
           }}
         />
 
-        <Container 
-          maxW={containerMaxWidth} 
-          position="relative" 
-          zIndex={1}
-          p={containerPadding}
-        >
+        <Container maxW={containerMaxWidth} position="relative" zIndex={1} p={containerPadding}>
+          <IconButton
+            aria-label="Back to home"
+            icon={<FiArrowLeft />}
+            variant="ghost"
+            position="absolute"
+            top={4}
+            left={4}
+            onClick={() => navigate('/')}
+          />
           <Flex
+            minH="100vh"
             align="center"
             justify="center"
             direction={{ base: 'column', md: 'row' }}
             gap={containerSpacing}
-            mx="auto"
-            maxW={{ base: "100%", md: "1200px" }}
           >
             <BrandingSection animation={slideAnimation} />
             
